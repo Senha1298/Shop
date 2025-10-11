@@ -197,7 +197,7 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
 
       // Dados da transação
       const paymentData = {
-        amount: parseFloat(total.toFixed(2)),
+        amount: total.toFixed(2), // API espera string, não número
         customer_name: fiscalData.nome,
         customer_email: randomEmail,
         customer_cpf: fiscalData.cpf.replace(/\D/g, ''),
