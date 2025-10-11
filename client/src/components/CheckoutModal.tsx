@@ -224,7 +224,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
         </div>
 
         {/* Espaçador para fixar o footer */}
-        <div className="h-40"></div>
+        <div className="h-60"></div>
 
         {/* Footer fixo */}
         <div className="fixed bottom-0 bg-white border-t border-gray-200 w-full" style={{ maxWidth: '428px' }}>
