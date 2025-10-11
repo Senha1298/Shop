@@ -10,13 +10,7 @@ await build({
   platform: 'node',
   format: 'esm',
   outdir: 'dist',
-  external: [
-    'vite',
-    'esbuild',
-    '@vitejs/*',
-    '@replit/*',
-    '../vite.config'
-  ],
+  packages: 'external',
   define: {
     'import.meta.dirname': '__dirname',
   },
