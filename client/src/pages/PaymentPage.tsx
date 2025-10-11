@@ -131,7 +131,7 @@ export default function PaymentPage() {
             <div>
               <h2 className="text-xl font-bold mb-1">Aguardando o pagamento</h2>
               <p className="text-2xl font-bold text-black">
-                R$ {transaction.amount?.toFixed(2).replace('.', ',')}
+                R$ {parseFloat(transaction.amount || '0').toFixed(2).replace('.', ',')}
               </p>
             </div>
             <div className="bg-orange-400 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
@@ -206,7 +206,7 @@ export default function PaymentPage() {
                 Mini máquina de lavar roupa portátil dobrável
               </p>
               <p className="text-lg font-bold text-[#F52B56]">
-                R$ {transaction.amount?.toFixed(2).replace('.', ',')}
+                R$ {parseFloat(transaction.amount || '0').toFixed(2).replace('.', ',')}
               </p>
             </div>
           </div>
