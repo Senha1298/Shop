@@ -4,7 +4,7 @@ import { useLocation } from 'wouter';
 export default function PaymentPage() {
   const [, setLocation] = useLocation();
   const [transaction, setTransaction] = useState<any>(null);
-  const [timeLeft, setTimeLeft] = useState(24 * 3600); // 24 horas em segundos
+  const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutos em segundos
   const [copied, setCopied] = useState(false);
   const checkIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -86,7 +86,7 @@ export default function PaymentPage() {
 
   const formatExpiryDate = () => {
     const now = new Date();
-    now.setHours(now.getHours() + 24);
+    now.setMinutes(now.getMinutes() + 15);
     const day = now.getDate();
     const month = now.toLocaleString('pt-BR', { month: 'short' });
     const year = now.getFullYear();
