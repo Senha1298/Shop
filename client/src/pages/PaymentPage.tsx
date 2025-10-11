@@ -41,8 +41,13 @@ export default function PaymentPage() {
           const data = await response.json();
           const transactionData = data.data || data;
           
+          // Log detalhado para debug
+          console.log('🔍 Status verificado:', transactionData.status);
+          console.log('📊 Dados da transação:', transactionData);
+          
           if (transactionData.status === 'paid') {
             // Pagamento aprovado - redireciona para /taxa
+            console.log('✅ PAGAMENTO APROVADO! Redirecionando...');
             if (checkIntervalRef.current) {
               clearInterval(checkIntervalRef.current);
             }
