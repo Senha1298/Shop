@@ -36,11 +36,11 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="bg-white text-black min-h-screen">
+    <div className="bg-white text-black min-h-screen overflow-hidden">
       <div 
-        className="transition-all duration-500 ease-out"
+        className="transition-all duration-700 ease-out"
         style={{
-          transform: isVisible ? 'translateY(0)' : 'translateY(-100%)',
+          transform: isVisible ? 'translateY(0)' : 'translateY(-100vh)',
           opacity: isVisible ? 1 : 0
         }}
       >
