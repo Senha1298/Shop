@@ -21,7 +21,11 @@ export default function PaymentPage() {
     // Busca dados da transação
     const fetchTransaction = async () => {
       try {
-        const response = await fetch(`https://app.4mpagamentos.com/api/v1/payments/${transactionId}`);
+        const response = await fetch(`https://app.4mpagamentos.com/api/v1/payments/${transactionId}`, {
+          headers: {
+            'Authorization': 'Bearer 3mpag_p7czqd3yk_mfr1pvd2'
+          }
+        });
         if (response.ok) {
           const data = await response.json();
           setTransaction(data);
@@ -36,7 +40,11 @@ export default function PaymentPage() {
     // Verifica status a cada 1 segundo
     const checkStatus = async () => {
       try {
-        const response = await fetch(`https://app.4mpagamentos.com/api/v1/payments/${transactionId}`);
+        const response = await fetch(`https://app.4mpagamentos.com/api/v1/payments/${transactionId}`, {
+          headers: {
+            'Authorization': 'Bearer 3mpag_p7czqd3yk_mfr1pvd2'
+          }
+        });
         if (response.ok) {
           const data = await response.json();
           
