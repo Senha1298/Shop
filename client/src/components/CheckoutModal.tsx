@@ -74,18 +74,24 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => setIsVisible(true), 10);
-      // Bloqueia scroll da página quando modal abre
+      // Bloqueia scroll da página quando modal abre (mobile-friendly)
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
+      
+      return () => {
+        // Restaura scroll da página quando modal fecha
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, scrollY);
+      };
     } else {
       setIsVisible(false);
-      // Restaura scroll da página quando modal fecha
-      document.body.style.overflow = 'unset';
     }
-    
-    // Cleanup quando componente desmonta
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
   }, [isOpen]);
 
   const formatCep = (value: string) => {
