@@ -16,8 +16,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const paymentData = req.body;
       
       // Log do valor enviado
-      console.log('💰 Criando pagamento com valor:', paymentData.amount);
-      console.log('📦 Dados enviados:', JSON.stringify(paymentData, null, 2));
+      console.log('💰 Criando pagamento com valor:', paymentData.amount, '(tipo:', typeof paymentData.amount, ')');
+      console.log('📦 Dados enviados para API:', JSON.stringify(paymentData, null, 2));
       
       const response = await fetch(`${FOUR_M_API_URL}/payments`, {
         method: 'POST',
@@ -57,6 +57,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
 
       const data = await response.json();
+      
+      // Log completo da resposta
+      console.log('📨 Status HTTP:', response.status);
+      console.log('📦 Resposta completa da API:', JSON.stringify(data, null, 2));
       
       if (!response.ok) {
         return res.status(response.status).json(data);

@@ -83,11 +83,13 @@ Preferred communication style: Simple, everyday language.
 **Payment Gateway Integration**
 - 4mpagamentos PIX payment API
 - Base URL: `https://app.4mpagamentos.com/api/v1`
-- API Key: `3mpag_p7czqd3yk_mfr1pvd2` (Bearer token authentication)
+- API Key: Stored in FOUR_M_API_KEY environment variable (Bearer token authentication)
 - Payment creation endpoint: `POST /payments`
 - Payment status checking: `GET /payments/{transaction_id}`
 - Polling mechanism: Status checks every 1-5 seconds for payment confirmation
 - Success redirect flow to `/taxa` page upon payment confirmation
+- **Important:** API expects `amount` as STRING in REAIS (e.g., "99.80"), not centavos
+- **Email validation:** Generated emails have accents removed for API compatibility
 
 **Third-Party Services**
 - ViaCEP API for Brazilian postal code lookup (implied by address form with CEP field)

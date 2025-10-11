@@ -42,12 +42,14 @@ heroku create nome-da-sua-app
 ### 4. Configurar variáveis de ambiente
 
 ```bash
-# API Key da 4mpagamentos
-heroku config:set FOUR_M_API_KEY=3mpag_p7czqd3yk_mfr1pvd2
+# API Key da 4mpagamentos (use sua chave real)
+heroku config:set FOUR_M_API_KEY=sua_chave_aqui
 
 # Chave secreta para sessões
 heroku config:set SESSION_SECRET=$(openssl rand -base64 32)
 ```
+
+**⚠️ IMPORTANTE:** Nunca compartilhe sua FOUR_M_API_KEY publicamente!
 
 ### 5. Deploy
 
@@ -93,3 +95,25 @@ heroku config
 ## 🆘 Problemas?
 
 Consulte `CORRIGIR_HEROKU.md` para troubleshooting detalhado.
+
+---
+
+## 📝 Histórico de Correções
+
+### ✅ Correção do valor de pagamento (11/10/2025)
+
+**Problema:** Página de pagamento exibia R$64,90 ao invés do valor correto (R$99,80).
+
+**Causa:** API da 4mpagamentos espera `amount` como STRING em REAIS, não centavos.
+
+**Solução aplicada:**
+- Alterado `CheckoutModal.tsx`: `amount: total.toFixed(2)` (retorna string "99.80")
+- Antes era: `Math.round(total * 100).toString()` (retornava "9980" - centavos)
+- Email normalizado para remover acentos (ex: "João" → "joao")
+
+**Para aplicar no Heroku:**
+```bash
+git add .
+git commit -m "Fix: Corrigir formato de amount para API (REAIS como string)"
+git push heroku main
+```

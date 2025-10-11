@@ -170,7 +170,12 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
 
   const generateRandomEmail = (name: string) => {
     const randomNum = Math.floor(Math.random() * 10000);
-    const cleanName = name.toLowerCase().replace(/\s+/g, '');
+    // Remove acentos e caracteres especiais
+    const cleanName = name
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // Remove diacríticos
+      .replace(/[^a-z0-9]/g, ''); // Remove tudo que não é letra ou número
     return `${cleanName}${randomNum}@cliente.com`;
   };
 
@@ -197,7 +202,7 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
 
       // Dados da transação
       const paymentData = {
-        amount: Math.round(total * 100).toString(), // Converte para centavos (API espera valor inteiro em centavos)
+        amount: total.toFixed(2), // API espera valor em REAIS como STRING (ex: "99.80")
         customer_name: fiscalData.nome,
         customer_email: randomEmail,
         customer_cpf: fiscalData.cpf.replace(/\D/g, ''),
