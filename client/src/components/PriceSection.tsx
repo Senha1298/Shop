@@ -15,7 +15,7 @@ export default function PriceSection() {
         </span>
         <i className="fas fa-ticket-alt text-[#F52B56] text-sm"></i>
         <span className="flex items-center text-[#e0e0e0] line-through text-sm font-normal whitespace-nowrap">
-          R$ 350,00
+          R$ 179,90
         </span>
       </div>
       

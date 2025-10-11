@@ -27,7 +27,7 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
   const discount = couponApplied ? productPrice * 0.10 : 0;
   const finalProductPrice = productPrice - discount;
   const total = finalProductPrice + shippingPrice;
-  const oldPrice = 350.00;
+  const oldPrice = 179.90;
   const savings = oldPrice - total;
   const [isVisible, setIsVisible] = useState(false);
   const [address, setAddress] = useState<Address>({
@@ -223,7 +223,7 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
                 <span className="text-sm font-semibold text-[#F52B56] mr-1.5">
                   R$ {finalProductPrice.toFixed(2).replace('.', ',')}
                 </span>
-                <span className="text-[10px] text-gray-400 line-through mr-1">R$ 350,00</span>
+                <span className="text-[10px] text-gray-400 line-through mr-1">R$ 179,90</span>
                 <span className="text-[10px] text-[#F52B56]">
                   -{Math.round((1 - finalProductPrice/oldPrice) * 100)}%
                 </span>
