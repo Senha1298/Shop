@@ -44,6 +44,7 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
   });
   const [isLoadingCep, setIsLoadingCep] = useState(false);
   const [showFiscalData, setShowFiscalData] = useState(false);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   
   // Timer de contagem regressiva
   const [timeLeft, setTimeLeft] = useState(6 * 3600 + 46 * 60 + 32); // 6:46:32 em segundos
@@ -167,10 +168,66 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
     return numbers.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');
   };
 
-  const handleFazerPedido = () => {
-    // Valida se todos os campos de endereço estão preenchidos
-    if (address.cep && address.rua && address.numero && address.cidade && address.estado) {
-      setShowFiscalData(true);
+  const generateRandomEmail = (name: string) => {
+    const randomNum = Math.floor(Math.random() * 10000);
+    const cleanName = name.toLowerCase().replace(/\s+/g, '');
+    return `${cleanName}${randomNum}@cliente.com`;
+  };
+
+  const handleFazerPedido = async () => {
+    // Se ainda não preencheu dados fiscais, mostra o formulário
+    if (!showFiscalData) {
+      if (address.cep && address.rua && address.numero && address.cidade && address.estado) {
+        setShowFiscalData(true);
+      }
+      return;
+    }
+
+    // Valida se todos os campos fiscais estão preenchidos
+    if (!fiscalData.nome || !fiscalData.telefone || !fiscalData.cpf) {
+      alert('Por favor, preencha todos os dados para continuar.');
+      return;
+    }
+
+    setIsProcessingPayment(true);
+
+    try {
+      // Gera email aleatório
+      const randomEmail = generateRandomEmail(fiscalData.nome);
+
+      // Dados da transação
+      const paymentData = {
+        amount: parseFloat(total.toFixed(2)),
+        customer_name: fiscalData.nome,
+        customer_email: randomEmail,
+        customer_cpf: fiscalData.cpf.replace(/\D/g, ''),
+        customer_phone: fiscalData.telefone.replace(/\D/g, ''),
+        description: 'Mini máquina de lavar portátil'
+      };
+
+      // Cria transação
+      const response = await fetch('https://app.4mpagamentos.com/api/v1/payments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer 3mpag_p7czqd3yk_mfr1pvd2'
+        },
+        body: JSON.stringify(paymentData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao criar pagamento');
+      }
+
+      const transaction = await response.json();
+      
+      // Redireciona para página de pagamento com os dados da transação
+      window.location.href = `/pagamento?id=${transaction.transaction_id}`;
+
+    } catch (error) {
+      console.error('Erro ao processar pagamento:', error);
+      alert('Erro ao processar pagamento. Tente novamente.');
+      setIsProcessingPayment(false);
     }
   };
 
@@ -418,10 +475,23 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
             </div>
             <button 
               onClick={handleFazerPedido}
-              className="w-full bg-[#F52B56] text-white font-semibold py-2.5 rounded-lg"
+              disabled={isProcessingPayment}
+              className={`w-full ${isProcessingPayment ? 'bg-gray-400' : 'bg-[#F52B56]'} text-white font-semibold py-2.5 rounded-lg flex items-center justify-center`}
             >
-              <div className="text-sm">Fazer pedido</div>
-              <div className="text-[10px] mt-0.5">O cupom expira em {formatTime(timeLeft)}</div>
+              {isProcessingPayment ? (
+                <>
+                  <svg className="animate-spin h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <span className="text-sm">Processando...</span>
+                </>
+              ) : (
+                <div className="w-full">
+                  <div className="text-sm">{showFiscalData ? 'Fazer pedido' : 'Continuar'}</div>
+                  {!showFiscalData && <div className="text-[10px] mt-0.5">O cupom expira em {formatTime(timeLeft)}</div>}
+                </div>
+              )}
             </button>
           </div>
         </div>
