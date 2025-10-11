@@ -164,10 +164,10 @@ export default function PaymentPage() {
           </div>
 
           {/* QR Code */}
-          {(transaction.pix_qr_code || transaction.pixQrCode) && (
+          {(transaction.pix_code || transaction.pix_qr_code) && (
             <div className="flex justify-center mb-4">
               <img 
-                src={transaction.pix_qr_code || transaction.pixQrCode} 
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(transaction.pix_code || transaction.pix_qr_code)}`}
                 alt="QR Code PIX" 
                 className="w-48 h-48 object-contain"
               />
