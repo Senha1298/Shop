@@ -168,7 +168,8 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                 onChange={handleCepChange}
                 placeholder="00000-000"
                 maxLength={9}
-                className="w-full border border-gray-300 rounded px-2 py-2 text-xs"
+                className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
+                style={{ fontSize: '16px' }}
               />
             </div>
             <div className="col-span-2">
@@ -178,7 +179,8 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                 value={address.rua}
                 onChange={(e) => setAddress({ ...address, rua: e.target.value })}
                 placeholder=""
-                className="w-full border border-gray-300 rounded px-2 py-2 text-xs"
+                className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
+                style={{ fontSize: '16px' }}
               />
             </div>
           </div>
@@ -191,7 +193,8 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                 value={address.numero}
                 onChange={(e) => setAddress({ ...address, numero: e.target.value })}
                 placeholder=""
-                className="w-full border border-gray-300 rounded px-2 py-2 text-xs"
+                className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
+                style={{ fontSize: '16px' }}
               />
             </div>
             <div className="col-span-2">
@@ -201,7 +204,8 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                 value={address.cidade}
                 onChange={(e) => setAddress({ ...address, cidade: e.target.value })}
                 placeholder=""
-                className="w-full border border-gray-300 rounded px-2 py-2 text-xs"
+                className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
+                style={{ fontSize: '16px' }}
               />
             </div>
             <div>
@@ -212,7 +216,8 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                 onChange={(e) => setAddress({ ...address, estado: e.target.value.toUpperCase() })}
                 placeholder=""
                 maxLength={2}
-                className="w-full border border-gray-300 rounded px-2 py-2 text-xs uppercase"
+                className="w-full border border-gray-300 rounded px-2 py-3 text-base uppercase focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
+                style={{ fontSize: '16px' }}
               />
             </div>
           </div>
