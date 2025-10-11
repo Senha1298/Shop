@@ -134,7 +134,7 @@ export default function PaymentPage() {
                 R$ {transaction.amount?.toFixed(2).replace('.', ',')}
               </p>
             </div>
-            <div className="bg-orange-400 rounded-full p-3">
+            <div className="bg-orange-400 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
               <i className="fas fa-clock text-white text-xl"></i>
             </div>
           </div>
@@ -154,13 +154,13 @@ export default function PaymentPage() {
 
         {/* QR Code e Código PIX */}
         <div className="bg-white rounded-lg p-4">
-          <div className="flex items-center mb-4">
+          {/* Logo PIX centralizado */}
+          <div className="flex justify-center mb-4">
             <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Pix_logo.svg/1200px-Pix_logo.svg.png" 
-              alt="PIX" 
-              className="w-12 h-12 mr-2"
+              src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg" 
+              alt="PIX - Banco Central" 
+              className="h-8"
             />
-            <span className="text-lg font-semibold">PIX</span>
           </div>
 
           {/* QR Code */}
@@ -169,7 +169,7 @@ export default function PaymentPage() {
               <img 
                 src={transaction.pix_qr_code || transaction.pixQrCode} 
                 alt="QR Code PIX" 
-                className="w-48 h-48"
+                className="w-48 h-48 object-contain"
               />
             </div>
           )}
@@ -192,16 +192,24 @@ export default function PaymentPage() {
           </button>
         </div>
 
-        {/* Instruções */}
+        {/* Resumo do Pedido */}
         <div className="mt-4 bg-white rounded-lg p-4">
-          <p className="text-xs text-gray-500 mb-3">
-            Para acessar esta página no app, abra Loja &gt; Pedidos &gt; Sem pagamento &gt; Visualizar o código
-          </p>
-
-          <h3 className="font-semibold mb-2">Como fazer pagamentos com PIX?</h3>
-          <p className="text-sm text-gray-600">
-            Copie o código de pagamento acima, selecione Pix no seu app de internet ou de banco e cole o código.
-          </p>
+          <h3 className="font-semibold mb-3">Resumo do pedido</h3>
+          <div className="flex items-center">
+            <img 
+              src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2dab30m5z755d.webp"
+              alt="Mini máquina de lavar"
+              className="w-20 h-20 object-contain rounded mr-3"
+            />
+            <div className="flex-1">
+              <p className="text-sm font-medium mb-1">
+                Mini máquina de lavar roupa portátil dobrável
+              </p>
+              <p className="text-lg font-bold text-[#F52B56]">
+                R$ {transaction.amount?.toFixed(2).replace('.', ',')}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
