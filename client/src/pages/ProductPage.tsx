@@ -4,9 +4,11 @@ import PriceSection from '@/components/PriceSection';
 import OffersSection from '@/components/OffersSection';
 import ReviewsSection from '@/components/ReviewsSection';
 import DescriptionSection from '@/components/DescriptionSection';
+import CheckoutModal from '@/components/CheckoutModal';
 
 export default function ProductPage() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setIsVisible(true), 100);
@@ -93,14 +95,23 @@ export default function ProductPage() {
           />
         </div>
         <div className="flex items-center space-x-2 ml-6">
-          <button className="bg-[#F2F2F2] text-black font-semibold text-xs rounded-lg px-1 py-2 shadow-sm">
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="bg-[#F2F2F2] text-black font-semibold text-xs rounded-lg px-1 py-2 shadow-sm"
+          >
             Adicionar ao carrinho
           </button>
-          <button className="bg-[#F52B56] text-white font-semibold text-xs rounded-lg px-1 py-2 shadow-sm ml-0">
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="bg-[#F52B56] text-white font-semibold text-xs rounded-lg px-1 py-2 shadow-sm ml-0"
+          >
             Comprar com cupom
           </button>
         </div>
       </div>
+
+      {/* Checkout Modal */}
+      <CheckoutModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       {/* Floating Up Button */}
       <button 
