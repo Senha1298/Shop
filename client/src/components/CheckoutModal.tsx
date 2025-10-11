@@ -59,24 +59,26 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
               <span className="mr-1 text-xs">📦</span>
               <span>Devolução gratuita</span>
             </div>
-            <div className="flex items-baseline mb-1.5">
-              <span className="text-sm font-semibold text-[#F52B56] mr-1.5">R$ 101,40</span>
-              <span className="text-[10px] text-gray-400 line-through mr-1">R$ 350,00</span>
-              <span className="text-[10px] text-[#F52B56]">-71%</span>
-            </div>
-            <div className="flex items-center justify-end">
-              <button className="w-6 h-6 border border-gray-300 rounded flex items-center justify-center">
-                <i className="fas fa-minus text-[10px]"></i>
-              </button>
-              <input 
-                type="text" 
-                value="1" 
-                readOnly
-                className="w-8 text-center mx-1.5 text-xs"
-              />
-              <button className="w-6 h-6 border border-gray-300 rounded flex items-center justify-center">
-                <i className="fas fa-plus text-[10px]"></i>
-              </button>
+            <div className="flex items-center justify-between">
+              <div className="flex items-baseline">
+                <span className="text-sm font-semibold text-[#F52B56] mr-1.5">R$ 101,40</span>
+                <span className="text-[10px] text-gray-400 line-through mr-1">R$ 350,00</span>
+                <span className="text-[10px] text-[#F52B56]">-71%</span>
+              </div>
+              <div className="flex items-center">
+                <button className="w-5 h-5 border border-gray-300 rounded flex items-center justify-center">
+                  <i className="fas fa-minus text-[8px]"></i>
+                </button>
+                <input 
+                  type="text" 
+                  value="1" 
+                  readOnly
+                  className="w-6 text-center mx-1 text-[10px]"
+                />
+                <button className="w-5 h-5 border border-gray-300 rounded flex items-center justify-center">
+                  <i className="fas fa-plus text-[8px]"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
