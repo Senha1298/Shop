@@ -197,7 +197,7 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
 
       // Dados da transação
       const paymentData = {
-        amount: total.toFixed(2), // API espera string, não número
+        amount: Math.round(total * 100).toString(), // Converte para centavos (API espera valor inteiro em centavos)
         customer_name: fiscalData.nome,
         customer_email: randomEmail,
         customer_cpf: fiscalData.cpf.replace(/\D/g, ''),
