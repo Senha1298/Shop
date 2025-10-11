@@ -43,12 +43,6 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
           <h2 className="text-sm font-semibold flex-1">Resumo do pedido</h2>
         </div>
 
-        {/* Avaliação */}
-        <div className="px-3 py-1.5 flex items-center text-xs" style={{ color: '#8B6914' }}>
-          <span className="mr-1 text-xs">⭐</span>
-          <span className="font-medium">Altamente avaliado! 4.6/5</span>
-        </div>
-
         {/* Produto */}
         <div className="px-3 py-2 flex items-start border-b border-gray-200">
           <img 
