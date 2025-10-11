@@ -43,15 +43,6 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
           <h2 className="text-sm font-semibold flex-1">Resumo do pedido</h2>
         </div>
 
-        {/* Cupom esgotado */}
-        <div className="px-3 py-1.5 flex items-center justify-between border-b border-gray-200">
-          <div className="flex items-center text-xs" style={{ color: '#8B6914' }}>
-            <span className="mr-1 text-xs">🎁</span>
-            <span className="font-medium">Cupom de produto esgotado</span>
-          </div>
-          <i className="fas fa-chevron-right text-xs" style={{ color: '#8B6914' }}></i>
-        </div>
-
         {/* Avaliação */}
         <div className="px-3 py-1.5 flex items-center text-xs" style={{ color: '#8B6914' }}>
           <span className="mr-1 text-xs">⭐</span>
