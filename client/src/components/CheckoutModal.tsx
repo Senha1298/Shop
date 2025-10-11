@@ -281,7 +281,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
             }}
           >
             <div className="mb-2">
-              <label className="block text-xs font-medium mb-1">NOME COMPLETO</label>
+              <label className="block text-xs font-medium mb-1">NOME E SOBRENOME</label>
               <input 
                 type="text"
                 value={fiscalData.nome}
