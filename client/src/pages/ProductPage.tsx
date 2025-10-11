@@ -123,8 +123,8 @@ export default function ProductPage() {
 
       {/* Mensagem de cupom aplicado */}
       {showCouponMessage && (
-        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-bounce" style={{ maxWidth: '380px' }}>
-          <div className="flex items-center">
+        <div className="fixed top-20 left-0 right-0 mx-auto bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-bounce text-center" style={{ maxWidth: '380px', width: 'calc(100% - 32px)' }}>
+          <div className="flex items-center justify-center">
             <i className="fas fa-check-circle mr-2"></i>
             <span className="font-semibold">Cupom de 10% aplicado com sucesso!</span>
           </div>
