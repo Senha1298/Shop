@@ -21,14 +21,10 @@ export default function PaymentPage() {
     // Busca dados da transação
     const fetchTransaction = async () => {
       try {
-        const response = await fetch(`https://app.4mpagamentos.com/api/v1/payments/${transactionId}`, {
-          headers: {
-            'Authorization': 'Bearer 3mpag_p7czqd3yk_mfr1pvd2'
-          }
-        });
+        const response = await fetch(`/api/payments/${transactionId}`);
         if (response.ok) {
           const data = await response.json();
-          setTransaction(data);
+          setTransaction(data.data || data);
         }
       } catch (error) {
         console.error('Erro ao buscar transação:', error);
@@ -40,15 +36,12 @@ export default function PaymentPage() {
     // Verifica status a cada 1 segundo
     const checkStatus = async () => {
       try {
-        const response = await fetch(`https://app.4mpagamentos.com/api/v1/payments/${transactionId}`, {
-          headers: {
-            'Authorization': 'Bearer 3mpag_p7czqd3yk_mfr1pvd2'
-          }
-        });
+        const response = await fetch(`/api/payments/${transactionId}`);
         if (response.ok) {
           const data = await response.json();
+          const transactionData = data.data || data;
           
-          if (data.status === 'paid') {
+          if (transactionData.status === 'paid') {
             // Pagamento aprovado - redireciona para /taxa
             if (checkIntervalRef.current) {
               clearInterval(checkIntervalRef.current);
@@ -101,8 +94,9 @@ export default function PaymentPage() {
   };
 
   const handleCopyPixCode = () => {
-    if (transaction?.pixCopiaECola) {
-      navigator.clipboard.writeText(transaction.pixCopiaECola);
+    const pixCode = transaction?.pix_code || transaction?.pixCopiaECola;
+    if (pixCode) {
+      navigator.clipboard.writeText(pixCode);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
@@ -170,10 +164,10 @@ export default function PaymentPage() {
           </div>
 
           {/* QR Code */}
-          {transaction.pixQrCode && (
+          {(transaction.pix_qr_code || transaction.pixQrCode) && (
             <div className="flex justify-center mb-4">
               <img 
-                src={transaction.pixQrCode} 
+                src={transaction.pix_qr_code || transaction.pixQrCode} 
                 alt="QR Code PIX" 
                 className="w-48 h-48"
               />
@@ -183,7 +177,7 @@ export default function PaymentPage() {
           {/* Código PIX */}
           <div className="mb-4">
             <p className="text-sm text-gray-600 mb-2 break-all font-mono">
-              {transaction.pixCopiaECola || '00020101021226870014br.gov...'}
+              {transaction.pix_code || transaction.pixCopiaECola || '00020101021226870014br.gov...'}
             </p>
           </div>
 

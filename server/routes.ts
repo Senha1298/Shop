@@ -2,12 +2,60 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 
-export async function registerRoutes(app: Express): Promise<Server> {
-  // put application routes here
-  // prefix all routes with /api
+const FOUR_M_API_KEY = '3mpag_p7czqd3yk_mfr1pvd2';
+const FOUR_M_API_URL = 'https://app.4mpagamentos.com/api/v1';
 
-  // use storage to perform CRUD operations on the storage interface
-  // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
+export async function registerRoutes(app: Express): Promise<Server> {
+  // Criar pagamento PIX
+  app.post('/api/payments', async (req, res) => {
+    try {
+      const paymentData = req.body;
+      
+      const response = await fetch(`${FOUR_M_API_URL}/payments`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${FOUR_M_API_KEY}`
+        },
+        body: JSON.stringify(paymentData)
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        return res.status(response.status).json(data);
+      }
+
+      res.json(data);
+    } catch (error: any) {
+      console.error('Erro ao criar pagamento:', error);
+      res.status(500).json({ error: 'Erro ao processar pagamento' });
+    }
+  });
+
+  // Buscar status do pagamento
+  app.get('/api/payments/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      
+      const response = await fetch(`${FOUR_M_API_URL}/payments/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${FOUR_M_API_KEY}`
+        }
+      });
+
+      const data = await response.json();
+      
+      if (!response.ok) {
+        return res.status(response.status).json(data);
+      }
+
+      res.json(data);
+    } catch (error: any) {
+      console.error('Erro ao buscar pagamento:', error);
+      res.status(500).json({ error: 'Erro ao buscar pagamento' });
+    }
+  });
 
   const httpServer = createServer(app);
 

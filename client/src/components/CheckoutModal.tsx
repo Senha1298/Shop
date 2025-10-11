@@ -205,29 +205,22 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
         description: 'Mini máquina de lavar portátil'
       };
 
-      // Cria transação
-      console.log('Enviando dados:', paymentData);
-      
-      const response = await fetch('https://app.4mpagamentos.com/api/v1/payments', {
+      // Cria transação via backend (evita CORS)
+      const response = await fetch('/api/payments', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer 3mpag_p7czqd3yk_mfr1pvd2'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(paymentData)
       });
 
-      console.log('Status da resposta:', response.status);
-      
       const responseData = await response.json();
-      console.log('Resposta completa:', responseData);
 
       if (!response.ok) {
         throw new Error(responseData.error?.message || 'Erro ao criar pagamento');
       }
 
       const transaction = responseData.data || responseData;
-      console.log('Transaction ID:', transaction.transaction_id);
       
       // Redireciona para página de pagamento com os dados da transação
       window.location.href = `/pagamento?id=${transaction.transaction_id}`;
