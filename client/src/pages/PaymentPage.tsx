@@ -195,7 +195,7 @@ export default function PaymentPage() {
         {/* Resumo do Pedido */}
         <div className="mt-4 bg-white rounded-lg p-4">
           <h3 className="font-semibold mb-3">Resumo do pedido</h3>
-          <div className="flex items-center">
+          <div className="flex items-center mb-4">
             <img 
               src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2dab30m5z755d.webp"
               alt="Mini máquina de lavar"
@@ -208,6 +208,25 @@ export default function PaymentPage() {
               <p className="text-lg font-bold text-[#F52B56]">
                 R$ {parseFloat(transaction.amount || '0').toFixed(2).replace('.', ',')}
               </p>
+            </div>
+          </div>
+
+          {/* Informações de Entrega */}
+          <div className="border-t border-gray-200 pt-3">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center">
+                <i className="fas fa-truck text-gray-600 mr-2"></i>
+                <span className="text-sm text-gray-700">Estimativa de entrega</span>
+              </div>
+              <span className="text-sm font-semibold text-gray-900">14 a 18 de outubro</span>
+            </div>
+            <div className="flex items-center mt-2">
+              <span className="text-xs text-gray-500 mr-2">Enviado via</span>
+              <img 
+                src="https://cdn.cookielaw.org/logos/ca573dc2-6848-4d5d-811b-a73af38af8db/351dcc81-561f-44be-ad95-966e6f1bb905/f0416ebe-67db-4d95-aee0-56e49a2678f4/logo_jadlog.png"
+                alt="Jadlog"
+                className="h-5 object-contain"
+              />
             </div>
           </div>
         </div>
