@@ -27,9 +27,18 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => setIsVisible(true), 10);
+      // Bloqueia scroll da página quando modal abre
+      document.body.style.overflow = 'hidden';
     } else {
       setIsVisible(false);
+      // Restaura scroll da página quando modal fecha
+      document.body.style.overflow = 'unset';
     }
+    
+    // Cleanup quando componente desmonta
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [isOpen]);
 
   const formatCep = (value: string) => {
@@ -74,17 +83,18 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
     <>
       {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-black bg-opacity-50 z-50"
+        className="fixed inset-0 bg-black bg-opacity-50 z-50 overflow-hidden"
         onClick={onClose}
       />
       
       {/* Modal */}
       <div 
-        className="fixed top-0 right-0 h-full bg-white z-50 transition-transform duration-300 ease-out overflow-y-auto"
+        className="fixed top-0 right-0 h-full bg-white z-50 transition-transform duration-300 ease-out overflow-y-auto overflow-x-hidden"
         style={{
           width: '100%',
           maxWidth: '428px',
           transform: isVisible ? 'translateX(0)' : 'translateX(100%)',
+          WebkitOverflowScrolling: 'touch'
         }}
       >
         {/* Header */}
