@@ -9,7 +9,7 @@ export default function PriceSection() {
           <span className="text-[#F52B56] text-sm font-bold leading-tight" style={{ marginBottom: '2px' }}>
             A partir de&nbsp;
           </span>
-          <span className="text-[#F52B56] text-3xl font-bold leading-none">
+          <span className="text-[#F52B56] text-2xl font-bold leading-none">
             R$ 94,20
           </span>
         </span>

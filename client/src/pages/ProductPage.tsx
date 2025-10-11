@@ -86,24 +86,24 @@ export default function ProductPage() {
       </div>
 
       {/* Floating Action Bar */}
-      <div className="fixed bottom-0 left-0 w-full bg-white flex items-center justify-between px-4 py-3 z-40" style={{ maxWidth: '428px' }}>
+      <div className="fixed bottom-4 left-0 w-full bg-white flex items-center justify-between px-4 py-4 z-40" style={{ maxWidth: '428px' }}>
         <div className="flex items-center">
           <img 
             src="https://i.ibb.co/mFB188wc/Captura-de-Tela-2025-10-11-a-s-15-39-55.png" 
             alt="Ícone institucional da loja, fundo branco, símbolo dourado" 
-            className="w-16 h-16 object-contain"
+            className="w-20 h-20 object-contain"
           />
         </div>
         <div className="flex items-center space-x-2 ml-6">
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="bg-[#F2F2F2] text-black font-semibold text-xs rounded-lg px-1 py-2 shadow-sm"
+            className="bg-[#F2F2F2] text-black font-semibold text-sm rounded-lg px-2 py-2.5 shadow-sm"
           >
             Adicionar ao carrinho
           </button>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="bg-[#F52B56] text-white font-semibold text-xs rounded-lg px-1 py-2 shadow-sm ml-0"
+            className="bg-[#F52B56] text-white font-semibold text-sm rounded-lg px-2 py-2.5 shadow-sm ml-0"
           >
             Comprar com cupom
           </button>
