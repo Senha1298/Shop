@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'TikTok';
+  src: url('/fonts/TikTokFont-Semibold.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* LIGHT MODE */
 :root {
   --button-outline: rgba(0,0,0, .10);
@@ -76,7 +84,7 @@
   --chart-4: 280 65% 60%;
   --chart-5: 160 60% 45%;
 
-  --font-sans: Open Sans, sans-serif;
+  --font-sans: TikTok, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
   --radius: .5rem; /* 8px */
