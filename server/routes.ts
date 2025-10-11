@@ -2,8 +2,12 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 
-const FOUR_M_API_KEY = '3mpag_p7czqd3yk_mfr1pvd2';
+const FOUR_M_API_KEY = process.env.FOUR_M_API_KEY;
 const FOUR_M_API_URL = 'https://app.4mpagamentos.com/api/v1';
+
+if (!FOUR_M_API_KEY) {
+  throw new Error('FOUR_M_API_KEY não configurada. Por favor, adicione a chave da API nas secrets.');
+}
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Criar pagamento PIX
