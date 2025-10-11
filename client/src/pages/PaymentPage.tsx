@@ -176,7 +176,7 @@ export default function PaymentPage() {
 
           {/* Código PIX */}
           <div className="mb-4">
-            <p className="text-sm text-gray-600 mb-2 break-all font-mono">
+            <p className="text-xs text-gray-600 mb-2 break-all font-mono max-h-12 overflow-hidden">
               {transaction.pix_code || transaction.pixCopiaECola || '00020101021226870014br.gov...'}
             </p>
           </div>
@@ -190,6 +190,29 @@ export default function PaymentPage() {
             <i className={`fas ${copied ? 'fa-check' : 'fa-copy'} mr-2`}></i>
             {copied ? 'Copiado!' : 'Copiar'}
           </button>
+
+          {/* Passo a passo */}
+          <div className="mt-4 bg-gray-50 rounded-lg p-3">
+            <h4 className="text-sm font-semibold mb-2 text-gray-900">Como pagar com PIX Copia e Cola:</h4>
+            <ol className="space-y-2">
+              <li className="flex items-start text-xs text-gray-700">
+                <span className="bg-[#F52B56] text-white rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 text-xs font-semibold">1</span>
+                <span>Clique no botão "Copiar" acima para copiar o código PIX</span>
+              </li>
+              <li className="flex items-start text-xs text-gray-700">
+                <span className="bg-[#F52B56] text-white rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 text-xs font-semibold">2</span>
+                <span>Abra o app do seu banco e vá em PIX</span>
+              </li>
+              <li className="flex items-start text-xs text-gray-700">
+                <span className="bg-[#F52B56] text-white rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 text-xs font-semibold">3</span>
+                <span>Escolha a opção "Pix Copia e Cola" ou "Pagar com código"</span>
+              </li>
+              <li className="flex items-start text-xs text-gray-700">
+                <span className="bg-[#F52B56] text-white rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 text-xs font-semibold">4</span>
+                <span>Cole o código copiado e confirme o pagamento</span>
+              </li>
+            </ol>
+          </div>
         </div>
 
         {/* Resumo do Pedido */}
