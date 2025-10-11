@@ -206,6 +206,8 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
       };
 
       // Cria transação
+      console.log('Enviando dados:', paymentData);
+      
       const response = await fetch('https://app.4mpagamentos.com/api/v1/payments', {
         method: 'POST',
         headers: {
@@ -215,18 +217,25 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
         body: JSON.stringify(paymentData)
       });
 
+      console.log('Status da resposta:', response.status);
+      
+      const responseData = await response.json();
+      console.log('Resposta completa:', responseData);
+
       if (!response.ok) {
-        throw new Error('Erro ao criar pagamento');
+        throw new Error(responseData.error?.message || 'Erro ao criar pagamento');
       }
 
-      const transaction = await response.json();
+      const transaction = responseData.data || responseData;
+      console.log('Transaction ID:', transaction.transaction_id);
       
       // Redireciona para página de pagamento com os dados da transação
       window.location.href = `/pagamento?id=${transaction.transaction_id}`;
 
-    } catch (error) {
+    } catch (error: any) {
       console.error('Erro ao processar pagamento:', error);
-      alert('Erro ao processar pagamento. Tente novamente.');
+      console.error('Detalhes do erro:', error.message);
+      alert(`Erro ao processar pagamento: ${error.message || 'Tente novamente.'}`);
       setIsProcessingPayment(false);
     }
   };
