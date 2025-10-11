@@ -5,8 +5,24 @@ interface CheckoutModalProps {
   onClose: () => void;
 }
 
+interface Address {
+  cep: string;
+  rua: string;
+  numero: string;
+  cidade: string;
+  estado: string;
+}
+
 export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const [address, setAddress] = useState<Address>({
+    cep: '',
+    rua: '',
+    numero: '',
+    cidade: '',
+    estado: ''
+  });
+  const [isLoadingCep, setIsLoadingCep] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -15,6 +31,42 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
       setIsVisible(false);
     }
   }, [isOpen]);
+
+  const formatCep = (value: string) => {
+    const numbers = value.replace(/\D/g, '');
+    if (numbers.length <= 5) {
+      return numbers;
+    }
+    return `${numbers.slice(0, 5)}-${numbers.slice(5, 8)}`;
+  };
+
+  const handleCepChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatCep(e.target.value);
+    setAddress({ ...address, cep: formatted });
+
+    const numbers = formatted.replace(/\D/g, '');
+    if (numbers.length === 8) {
+      setIsLoadingCep(true);
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${numbers}/json/`);
+        const data = await response.json();
+        
+        if (!data.erro) {
+          setAddress({
+            ...address,
+            cep: formatted,
+            rua: data.logradouro || '',
+            cidade: data.localidade || '',
+            estado: data.uf || ''
+          });
+        }
+      } catch (error) {
+        console.error('Erro ao buscar CEP:', error);
+      } finally {
+        setIsLoadingCep(false);
+      }
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -106,21 +158,63 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
 
         {/* CEP e Endereço */}
         <div className="px-3 py-2">
-          <div className="mb-2">
-            <label className="block text-xs font-medium mb-1">CEP</label>
-            <input 
-              type="text"
-              placeholder=""
-              className="w-full border border-gray-300 rounded px-2 py-1.5 text-xs"
-            />
+          <div className="grid grid-cols-3 gap-2 mb-2">
+            <div>
+              <label className="block text-xs font-medium mb-1">CEP</label>
+              <input 
+                type="tel"
+                inputMode="numeric"
+                value={address.cep}
+                onChange={handleCepChange}
+                placeholder="00000-000"
+                maxLength={9}
+                className="w-full border border-gray-300 rounded px-2 py-2 text-xs"
+              />
+            </div>
+            <div className="col-span-2">
+              <label className="block text-xs font-medium mb-1">RUA</label>
+              <input 
+                type="text"
+                value={address.rua}
+                onChange={(e) => setAddress({ ...address, rua: e.target.value })}
+                placeholder=""
+                className="w-full border border-gray-300 rounded px-2 py-2 text-xs"
+              />
+            </div>
           </div>
-          <div className="mb-2">
-            <label className="block text-xs font-medium mb-1">ENDEREÇO</label>
-            <input 
-              type="text"
-              placeholder=""
-              className="w-full border border-gray-300 rounded px-2 py-1.5 text-xs"
-            />
+          
+          <div className="grid grid-cols-4 gap-2 mb-2">
+            <div>
+              <label className="block text-xs font-medium mb-1">Nº</label>
+              <input 
+                type="text"
+                value={address.numero}
+                onChange={(e) => setAddress({ ...address, numero: e.target.value })}
+                placeholder=""
+                className="w-full border border-gray-300 rounded px-2 py-2 text-xs"
+              />
+            </div>
+            <div className="col-span-2">
+              <label className="block text-xs font-medium mb-1">CIDADE</label>
+              <input 
+                type="text"
+                value={address.cidade}
+                onChange={(e) => setAddress({ ...address, cidade: e.target.value })}
+                placeholder=""
+                className="w-full border border-gray-300 rounded px-2 py-2 text-xs"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium mb-1">UF</label>
+              <input 
+                type="text"
+                value={address.estado}
+                onChange={(e) => setAddress({ ...address, estado: e.target.value.toUpperCase() })}
+                placeholder=""
+                maxLength={2}
+                className="w-full border border-gray-300 rounded px-2 py-2 text-xs uppercase"
+              />
+            </div>
           </div>
         </div>
 
