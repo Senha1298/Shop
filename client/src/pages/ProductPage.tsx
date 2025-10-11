@@ -9,10 +9,18 @@ import CheckoutModal from '@/components/CheckoutModal';
 export default function ProductPage() {
   const [isVisible, setIsVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [couponApplied, setCouponApplied] = useState(false);
+  const [showCouponMessage, setShowCouponMessage] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setIsVisible(true), 100);
   }, []);
+
+  const handleApplyCoupon = () => {
+    setCouponApplied(true);
+    setShowCouponMessage(true);
+    setTimeout(() => setShowCouponMessage(false), 3000);
+  };
 
   const images = [
     {
@@ -76,7 +84,7 @@ export default function ProductPage() {
         </div>
 
         {/* Ofertas */}
-        <OffersSection />
+        <OffersSection onApplyCoupon={handleApplyCoupon} couponApplied={couponApplied} />
 
         {/* Avaliações */}
         <ReviewsSection />
@@ -111,7 +119,17 @@ export default function ProductPage() {
       </div>
 
       {/* Checkout Modal */}
-      <CheckoutModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <CheckoutModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} couponApplied={couponApplied} />
+
+      {/* Mensagem de cupom aplicado */}
+      {showCouponMessage && (
+        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-bounce" style={{ maxWidth: '380px' }}>
+          <div className="flex items-center">
+            <i className="fas fa-check-circle mr-2"></i>
+            <span className="font-semibold">Cupom de 10% aplicado com sucesso!</span>
+          </div>
+        </div>
+      )}
 
       {/* Floating Up Button */}
       <button 

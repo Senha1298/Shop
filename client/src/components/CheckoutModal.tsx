@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 interface CheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
+  couponApplied: boolean;
 }
 
 interface Address {
@@ -19,7 +20,15 @@ interface FiscalData {
   cpf: string;
 }
 
-export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
+export default function CheckoutModal({ isOpen, onClose, couponApplied }: CheckoutModalProps) {
+  // Cálculos de preço
+  const productPrice = 89.90;
+  const shippingPrice = 9.90;
+  const discount = couponApplied ? productPrice * 0.10 : 0;
+  const finalProductPrice = productPrice - discount;
+  const total = finalProductPrice + shippingPrice;
+  const oldPrice = 350.00;
+  const savings = oldPrice - total;
   const [isVisible, setIsVisible] = useState(false);
   const [address, setAddress] = useState<Address>({
     cep: '',
@@ -155,9 +164,13 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
             </div>
             <div className="flex items-center justify-between">
               <div className="flex items-baseline">
-                <span className="text-sm font-semibold text-[#F52B56] mr-1.5">R$ 101,40</span>
+                <span className="text-sm font-semibold text-[#F52B56] mr-1.5">
+                  R$ {finalProductPrice.toFixed(2).replace('.', ',')}
+                </span>
                 <span className="text-[10px] text-gray-400 line-through mr-1">R$ 350,00</span>
-                <span className="text-[10px] text-[#F52B56]">-71%</span>
+                <span className="text-[10px] text-[#F52B56]">
+                  -{Math.round((1 - finalProductPrice/oldPrice) * 100)}%
+                </span>
               </div>
               <div className="flex items-center">
                 <button className="w-5 h-5 border border-gray-300 rounded flex items-center justify-center">
@@ -181,22 +194,24 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
         <div className="px-3 py-2 border-b border-gray-200">
           <div className="flex items-center justify-between mb-0.5">
             <span className="text-xs font-medium">Receba até 14-18 de out</span>
-            <span className="text-xs font-semibold">R$ 22,60</span>
+            <span className="text-xs font-semibold">R$ 9,90</span>
           </div>
           <span className="text-[10px] text-gray-500">Envio padrão</span>
         </div>
 
         {/* Desconto TikTok */}
-        <div className="px-3 py-2 border-b border-gray-200 flex items-center justify-between">
-          <div className="flex items-center">
-            <i className="fas fa-ticket-alt text-[#F52B56] mr-1.5 text-sm"></i>
-            <span className="text-xs font-medium">Desconto do TikTok Shop</span>
+        {couponApplied && (
+          <div className="px-3 py-2 border-b border-gray-200 flex items-center justify-between">
+            <div className="flex items-center">
+              <i className="fas fa-ticket-alt text-[#F52B56] mr-1.5 text-sm"></i>
+              <span className="text-xs font-medium">Desconto do TikTok Shop (10%)</span>
+            </div>
+            <div className="flex items-center">
+              <span className="text-xs text-[#F52B56] mr-1.5">- R$ {discount.toFixed(2).replace('.', ',')}</span>
+              <i className="fas fa-chevron-right text-xs text-gray-400"></i>
+            </div>
           </div>
-          <div className="flex items-center">
-            <span className="text-xs text-[#F52B56] mr-1.5">- R$ 11,27</span>
-            <i className="fas fa-chevron-right text-xs text-gray-400"></i>
-          </div>
-        </div>
+        )}
 
         {/* Container com animação de slide */}
         <div className="relative overflow-hidden">
@@ -331,11 +346,11 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
           <div className="px-3 py-2">
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-xs font-semibold">Total</span>
-              <span className="text-sm font-bold">R$ 124,00</span>
+              <span className="text-sm font-bold">R$ {total.toFixed(2).replace('.', ',')}</span>
             </div>
             <div className="flex items-center text-[10px] px-1.5 py-1 rounded" style={{ color: '#F52B56', backgroundColor: '#FFF0F3' }}>
               <span className="mr-1 text-xs">😊</span>
-              <span>Você está economizando R$ 248,60 nesse pedido.</span>
+              <span>Você está economizando R$ {savings.toFixed(2).replace('.', ',')} nesse pedido.</span>
             </div>
           </div>
 
@@ -343,7 +358,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
           <div className="px-3 pb-3">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-medium">Total (1 item)</span>
-              <span className="text-base font-bold text-[#F52B56]">R$ 124,00</span>
+              <span className="text-base font-bold text-[#F52B56]">R$ {total.toFixed(2).replace('.', ',')}</span>
             </div>
             <button 
               onClick={handleFazerPedido}
