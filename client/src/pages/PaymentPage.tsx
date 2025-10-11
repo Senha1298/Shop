@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 
 export default function PaymentPage() {
@@ -6,7 +6,6 @@ export default function PaymentPage() {
   const [transaction, setTransaction] = useState<any>(null);
   const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutos em segundos
   const [copied, setCopied] = useState(false);
-  const checkIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // Pega ID da transação da URL
@@ -33,41 +32,8 @@ export default function PaymentPage() {
 
     fetchTransaction();
 
-    // Verifica status a cada 1 segundo
-    const checkStatus = async () => {
-      try {
-        const response = await fetch(`/api/payments/${transactionId}`);
-        if (response.ok) {
-          const data = await response.json();
-          const transactionData = data.data || data;
-          
-          // Log detalhado para debug
-          console.log('🔍 Status verificado:', transactionData.status);
-          console.log('📊 Dados da transação:', transactionData);
-          
-          if (transactionData.status === 'paid') {
-            // Pagamento aprovado - redireciona para /taxa
-            console.log('✅ PAGAMENTO APROVADO! Redirecionando...');
-            if (checkIntervalRef.current) {
-              clearInterval(checkIntervalRef.current);
-            }
-            setTimeout(() => {
-              window.location.href = '/taxa';
-            }, 1000);
-          }
-        }
-      } catch (error) {
-        console.error('Erro ao verificar status:', error);
-      }
-    };
-
-    checkIntervalRef.current = setInterval(checkStatus, 1000); // Verifica a cada 1 segundo
-
-    return () => {
-      if (checkIntervalRef.current) {
-        clearInterval(checkIntervalRef.current);
-      }
-    };
+    // REMOVIDO: Verificação automática de status que causava redirecionamento indevido
+    // A página agora permanece aqui até o usuário sair manualmente
   }, [setLocation]);
 
   // Timer de expiração
