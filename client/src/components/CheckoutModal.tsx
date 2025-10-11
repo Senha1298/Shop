@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -47,23 +47,45 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
   
   // Timer de contagem regressiva
   const [timeLeft, setTimeLeft] = useState(6 * 3600 + 46 * 60 + 32); // 6:46:32 em segundos
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    if (!isOpen) return;
-    
-    // Reset do timer quando o modal abre
-    setTimeLeft(6 * 3600 + 46 * 60 + 32);
-    
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 0) {
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+    if (isOpen) {
+      // Reset do timer quando o modal abre
+      setTimeLeft(6 * 3600 + 46 * 60 + 32);
+      
+      // Limpa timer anterior se existir
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+      
+      // Cria novo timer
+      timerRef.current = setInterval(() => {
+        setTimeLeft((prev) => {
+          if (prev <= 0) {
+            if (timerRef.current) {
+              clearInterval(timerRef.current);
+              timerRef.current = null;
+            }
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } else {
+      // Limpa timer quando modal fecha
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    }
 
-    return () => clearInterval(timer);
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    };
   }, [isOpen]);
 
   const formatTime = (seconds: number) => {
