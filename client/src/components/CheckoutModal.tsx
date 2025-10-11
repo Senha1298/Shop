@@ -51,10 +51,12 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
   useEffect(() => {
     if (!isOpen) return;
     
+    // Reset do timer quando o modal abre
+    setTimeLeft(6 * 3600 + 46 * 60 + 32);
+    
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 0) {
-          clearInterval(timer);
           return 0;
         }
         return prev - 1;
