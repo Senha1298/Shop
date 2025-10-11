@@ -1,21 +1,15 @@
 # ⚙️ Configuração Adicional para Heroku
 
-## 📝 Adicionar script no package.json
+## 📝 Modificar scripts no package.json
 
-Para que o Heroku faça o build automaticamente, adicione esta linha na seção `"scripts"` do arquivo `package.json`:
-
-```json
-"heroku-postbuild": "npm run build"
-```
-
-O arquivo ficará assim:
+**IMPORTANTE:** Substitua a seção `"scripts"` no arquivo `package.json` por:
 
 ```json
 "scripts": {
   "dev": "NODE_ENV=development tsx server/index.ts",
-  "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+  "build": "vite build && node build.js",
   "start": "NODE_ENV=production node dist/index.js",
-  "heroku-postbuild": "npm run build",  // ← ADICIONE ESTA LINHA
+  "heroku-postbuild": "npm run build",
   "check": "tsc",
   "db:push": "drizzle-kit push"
 }
