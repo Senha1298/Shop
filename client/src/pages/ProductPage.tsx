@@ -40,7 +40,7 @@ export default function ProductPage() {
       <div 
         className="transition-all duration-700 ease-out"
         style={{
-          transform: isVisible ? 'translateY(0)' : 'translateY(-100vh)',
+          transform: isVisible ? 'translateY(0)' : 'translateY(100vh)',
           opacity: isVisible ? 1 : 0
         }}
       >
