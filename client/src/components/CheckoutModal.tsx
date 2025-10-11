@@ -44,6 +44,32 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
   });
   const [isLoadingCep, setIsLoadingCep] = useState(false);
   const [showFiscalData, setShowFiscalData] = useState(false);
+  
+  // Timer de contagem regressiva
+  const [timeLeft, setTimeLeft] = useState(6 * 3600 + 46 * 60 + 32); // 6:46:32 em segundos
+
+  useEffect(() => {
+    if (!isOpen) return;
+    
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 0) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isOpen]);
+
+  const formatTime = (seconds: number) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -365,7 +391,7 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
               className="w-full bg-[#F52B56] text-white font-semibold py-2.5 rounded-lg"
             >
               <div className="text-sm">Fazer pedido</div>
-              <div className="text-[10px] mt-0.5">O cupom expira em 06:46:32</div>
+              <div className="text-[10px] mt-0.5">O cupom expira em {formatTime(timeLeft)}</div>
             </button>
           </div>
         </div>
