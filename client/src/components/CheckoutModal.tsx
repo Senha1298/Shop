@@ -13,6 +13,12 @@ interface Address {
   estado: string;
 }
 
+interface FiscalData {
+  nome: string;
+  telefone: string;
+  cpf: string;
+}
+
 export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [address, setAddress] = useState<Address>({
@@ -22,7 +28,13 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
     cidade: '',
     estado: ''
   });
+  const [fiscalData, setFiscalData] = useState<FiscalData>({
+    nome: '',
+    telefone: '',
+    cpf: ''
+  });
   const [isLoadingCep, setIsLoadingCep] = useState(false);
+  const [showFiscalData, setShowFiscalData] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -74,6 +86,26 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
       } finally {
         setIsLoadingCep(false);
       }
+    }
+  };
+
+  const formatTelefone = (value: string) => {
+    const numbers = value.replace(/\D/g, '');
+    if (numbers.length <= 10) {
+      return numbers.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+    }
+    return numbers.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+  };
+
+  const formatCPF = (value: string) => {
+    const numbers = value.replace(/\D/g, '');
+    return numbers.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');
+  };
+
+  const handleFazerPedido = () => {
+    // Valida se todos os campos de endereço estão preenchidos
+    if (address.cep && address.rua && address.numero && address.cidade && address.estado) {
+      setShowFiscalData(true);
     }
   };
 
@@ -166,68 +198,124 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
           </div>
         </div>
 
-        {/* CEP e Endereço */}
-        <div className="px-3 py-2">
-          <div className="grid grid-cols-2 gap-2 mb-2">
-            <div>
-              <label className="block text-xs font-medium mb-1">CEP</label>
+        {/* Container com animação de slide */}
+        <div className="relative overflow-hidden">
+          {/* CEP e Endereço */}
+          <div 
+            className="px-3 py-2 transition-transform duration-500 ease-in-out"
+            style={{
+              transform: showFiscalData ? 'translateX(-100%)' : 'translateX(0)',
+            }}
+          >
+            <div className="grid grid-cols-2 gap-2 mb-2">
+              <div>
+                <label className="block text-xs font-medium mb-1">CEP</label>
+                <input 
+                  type="tel"
+                  inputMode="numeric"
+                  value={address.cep}
+                  onChange={handleCepChange}
+                  placeholder="00000-000"
+                  maxLength={9}
+                  className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
+                  style={{ fontSize: '16px' }}
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium mb-1">CIDADE</label>
+                <input 
+                  type="text"
+                  value={address.cidade}
+                  onChange={(e) => setAddress({ ...address, cidade: e.target.value })}
+                  placeholder=""
+                  className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
+                  style={{ fontSize: '16px' }}
+                />
+              </div>
+            </div>
+            
+            <div className="mb-2">
+              <label className="block text-xs font-medium mb-1">RUA</label>
+              <input 
+                type="text"
+                value={address.rua}
+                onChange={(e) => setAddress({ ...address, rua: e.target.value })}
+                placeholder=""
+                className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
+                style={{ fontSize: '16px' }}
+              />
+            </div>
+            
+            <div className="grid grid-cols-2 gap-2 mb-2">
+              <div>
+                <label className="block text-xs font-medium mb-1">NÚMERO</label>
+                <input 
+                  type="text"
+                  value={address.numero}
+                  onChange={(e) => setAddress({ ...address, numero: e.target.value })}
+                  placeholder=""
+                  className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
+                  style={{ fontSize: '16px' }}
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium mb-1">UF</label>
+                <input 
+                  type="text"
+                  value={address.estado}
+                  onChange={(e) => setAddress({ ...address, estado: e.target.value.toUpperCase() })}
+                  placeholder=""
+                  maxLength={2}
+                  className="w-full border border-gray-300 rounded px-2 py-3 text-base uppercase focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
+                  style={{ fontSize: '16px' }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Dados para Nota Fiscal */}
+          <div 
+            className="absolute top-0 left-0 w-full px-3 py-2 transition-transform duration-500 ease-in-out"
+            style={{
+              transform: showFiscalData ? 'translateX(0)' : 'translateX(100%)',
+            }}
+          >
+            <div className="mb-2">
+              <label className="block text-xs font-medium mb-1">NOME COMPLETO</label>
+              <input 
+                type="text"
+                value={fiscalData.nome}
+                onChange={(e) => setFiscalData({ ...fiscalData, nome: e.target.value })}
+                placeholder=""
+                className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
+                style={{ fontSize: '16px' }}
+              />
+            </div>
+
+            <div className="mb-2">
+              <label className="block text-xs font-medium mb-1">TELEFONE</label>
               <input 
                 type="tel"
                 inputMode="numeric"
-                value={address.cep}
-                onChange={handleCepChange}
-                placeholder="00000-000"
-                maxLength={9}
+                value={fiscalData.telefone}
+                onChange={(e) => setFiscalData({ ...fiscalData, telefone: formatTelefone(e.target.value) })}
+                placeholder="(00) 00000-0000"
+                maxLength={15}
                 className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
                 style={{ fontSize: '16px' }}
               />
             </div>
-            <div>
-              <label className="block text-xs font-medium mb-1">CIDADE</label>
+
+            <div className="mb-2">
+              <label className="block text-xs font-medium mb-1">CPF</label>
               <input 
-                type="text"
-                value={address.cidade}
-                onChange={(e) => setAddress({ ...address, cidade: e.target.value })}
-                placeholder=""
+                type="tel"
+                inputMode="numeric"
+                value={fiscalData.cpf}
+                onChange={(e) => setFiscalData({ ...fiscalData, cpf: formatCPF(e.target.value) })}
+                placeholder="000.000.000-00"
+                maxLength={14}
                 className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
-                style={{ fontSize: '16px' }}
-              />
-            </div>
-          </div>
-          
-          <div className="mb-2">
-            <label className="block text-xs font-medium mb-1">RUA</label>
-            <input 
-              type="text"
-              value={address.rua}
-              onChange={(e) => setAddress({ ...address, rua: e.target.value })}
-              placeholder=""
-              className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
-              style={{ fontSize: '16px' }}
-            />
-          </div>
-          
-          <div className="grid grid-cols-2 gap-2 mb-2">
-            <div>
-              <label className="block text-xs font-medium mb-1">NÚMERO</label>
-              <input 
-                type="text"
-                value={address.numero}
-                onChange={(e) => setAddress({ ...address, numero: e.target.value })}
-                placeholder=""
-                className="w-full border border-gray-300 rounded px-2 py-3 text-base focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
-                style={{ fontSize: '16px' }}
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium mb-1">UF</label>
-              <input 
-                type="text"
-                value={address.estado}
-                onChange={(e) => setAddress({ ...address, estado: e.target.value.toUpperCase() })}
-                placeholder=""
-                maxLength={2}
-                className="w-full border border-gray-300 rounded px-2 py-3 text-base uppercase focus:outline-none focus:border-[#F52B56] focus:ring-1 focus:ring-[#F52B56]"
                 style={{ fontSize: '16px' }}
               />
             </div>
@@ -257,7 +345,10 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
               <span className="text-xs font-medium">Total (1 item)</span>
               <span className="text-base font-bold text-[#F52B56]">R$ 124,00</span>
             </div>
-            <button className="w-full bg-[#F52B56] text-white font-semibold py-2.5 rounded-lg">
+            <button 
+              onClick={handleFazerPedido}
+              className="w-full bg-[#F52B56] text-white font-semibold py-2.5 rounded-lg"
+            >
               <div className="text-sm">Fazer pedido</div>
               <div className="text-[10px] mt-0.5">O cupom expira em 06:46:32</div>
             </button>
