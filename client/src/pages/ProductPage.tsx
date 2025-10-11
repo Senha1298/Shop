@@ -86,7 +86,7 @@ export default function ProductPage() {
       </div>
 
       {/* Floating Action Bar */}
-      <div className="fixed left-0 w-full bg-white flex items-center justify-between px-4 py-2 z-40" style={{ maxWidth: '428px', bottom: '-10px' }}>
+      <div className="fixed left-0 w-full bg-white flex items-center justify-between px-4 py-2 z-40" style={{ maxWidth: '428px', bottom: '-30px' }}>
         <div className="flex items-center">
           <img 
             src="https://i.ibb.co/mFB188wc/Captura-de-Tela-2025-10-11-a-s-15-39-55.png" 
