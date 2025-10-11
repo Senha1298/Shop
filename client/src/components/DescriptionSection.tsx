@@ -1,10 +1,10 @@
 export default function DescriptionSection() {
   return (
     <div className="px-4 pb-24" style={{ maxWidth: '428px' }}>
-      <div className="text-xs font-semibold mb-2 text-black">
+      <div className="text-base font-semibold mb-2 text-black">
         Descrição
       </div>
-      <div className="text-[11px] text-black mb-2">
+      <div className="text-sm text-black mb-2">
         <span className="font-semibold">
           Mini Máquina de Lavar Dobrável: Praticidade e Eficiência na Lavagem de Pequenos Itens
         </span>

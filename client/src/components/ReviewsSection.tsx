@@ -1,63 +1,63 @@
 export default function ReviewsSection() {
   return (
     <div className="px-4 py-3" style={{ maxWidth: '428px' }}>
-      <div className="text-xs font-semibold mb-2 text-black">
+      <div className="text-base font-semibold mb-2 text-black">
         Avaliações dos clientes (32)
       </div>
       
       <div className="flex items-center mb-1">
-        <span className="text-[#ffb400] text-sm">
+        <span className="text-[#ffb400] text-base">
           <i className="fas fa-star"></i>
         </span>
-        <span className="text-[#ffb400] text-sm">
+        <span className="text-[#ffb400] text-base">
           <i className="fas fa-star"></i>
         </span>
-        <span className="text-[#ffb400] text-sm">
+        <span className="text-[#ffb400] text-base">
           <i className="fas fa-star"></i>
         </span>
-        <span className="text-[#ffb400] text-sm">
+        <span className="text-[#ffb400] text-base">
           <i className="fas fa-star"></i>
         </span>
-        <span className="text-[#ffb400] text-sm">
+        <span className="text-[#ffb400] text-base">
           <i className="fas fa-star-half-alt"></i>
         </span>
-        <span className="ml-2 text-black text-xs font-semibold">
+        <span className="ml-2 text-black text-sm font-semibold">
           4.6
         </span>
-        <span className="ml-2 text-[#757575] text-xs">
+        <span className="ml-2 text-[#757575] text-sm">
           /5
         </span>
       </div>
       
-      <div className="flex items-center text-[10px] text-[#757575] mb-2">
+      <div className="flex items-center text-sm text-[#757575] mb-2">
         <span className="mr-2">
           Rosifran Lima dos Santos
         </span>
       </div>
       
       <div className="flex items-center mb-1">
-        <span className="text-[#ffb400] text-xs">
+        <span className="text-[#ffb400] text-sm">
           <i className="fas fa-star"></i>
         </span>
-        <span className="text-[#ffb400] text-xs">
+        <span className="text-[#ffb400] text-sm">
           <i className="fas fa-star"></i>
         </span>
-        <span className="text-[#ffb400] text-xs">
+        <span className="text-[#ffb400] text-sm">
           <i className="fas fa-star"></i>
         </span>
-        <span className="text-[#ffb400] text-xs">
+        <span className="text-[#ffb400] text-sm">
           <i className="fas fa-star"></i>
         </span>
-        <span className="text-[#ffb400] text-xs">
+        <span className="text-[#ffb400] text-sm">
           <i className="fas fa-star"></i>
         </span>
       </div>
       
-      <div className="text-[10px] text-[#757575] mb-1">
+      <div className="text-sm text-[#757575] mb-1">
         Item: BEGE   COM CESTO 6,5L
       </div>
       
-      <div className="text-xs text-black mb-2">
+      <div className="text-sm text-black mb-2">
         Produto excelente! Chegou muito bem embalado e antes do prazo previsto. A mini máquina é prática, fácil de usar e realmente lava muito bem peças pequenas. Recomendo para quem busca praticidade no dia a dia. Estou muito satisfeita com a compra e com a agilidade na entrega!
       </div>
       
