@@ -10,7 +10,7 @@ export default function PriceSection() {
             A partir de&nbsp;
           </span>
           <span className="text-[#F52B56] text-2xl font-bold leading-none">
-            R$ 89,90
+            R$ 68,90
           </span>
         </span>
         <i className="fas fa-ticket-alt text-[#F52B56] text-sm"></i>
@@ -20,7 +20,7 @@ export default function PriceSection() {
       </div>
       
       <div className="text-sm text-[#757575] mt-1">
-        2x R$ 44,95
+        2x R$ 34,45
         <span className="text-[#F52B56]">
           {' '}sem juros
         </span>
