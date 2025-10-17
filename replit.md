@@ -44,8 +44,8 @@ Preferred communication style: Simple, everyday language.
 **Page Structure**
 - `/` - Product page with carousel, pricing, offers, reviews, and description
 - `/checkout` - Checkout page with all forms (personal data and address) and TikTok Shop branding
-- `/pagamento` - Payment page displaying PIX QR code and payment status
-- `/taxa` - Success page shown after payment confirmation
+- `/pagamento` - Payment page displaying PIX QR code and payment status for product purchase
+- `/taxa` - Import tax payment page with PIX integration (R$ 74,60) - includes modal with animated loader and payment processing
 - `/404` - Not found page
 
 **Key Frontend Components**
@@ -119,7 +119,34 @@ Preferred communication style: Simple, everyday language.
 5. User fills personal data (name, CPF, phone) and address (CEP, street, number, city, state)
 6. User clicks "Fazer pedido" → creates PIX payment via API
 7. Redirects to `/pagamento?id={transaction_id}` with QR code
-8. After payment, user can navigate to `/taxa` success page
+8. After payment, user can navigate to `/taxa` for import tax payment
+
+**Import Tax Payment Flow (/taxa)**
+1. User lands on `/taxa` page showing:
+   - Black header with TikTok Shop white logo
+   - Alert icon with "Produto Importado" warning
+   - Receita Federal logo
+   - Tax information (R$ 74,60 based on 60% import tax rate)
+   - Warning that product won't be shipped without tax payment
+2. User clicks "Regularizar Pedido" button
+3. Modal opens with animated loader showing "Gerando pagamento..."
+4. Backend creates PIX payment with hardcoded customer data:
+   - Name: PAULO ALVES DA SILVA
+   - CPF: 06953135417
+   - Email: poulsi14@gmail.com (accents removed)
+   - Phone: 11959107965
+   - Amount: "74.60" (string in reais)
+   - Description: Taxa de Importação - Buggy 29cc
+5. Modal displays:
+   - Header with animated loader: "Aguardando pagamento..."
+   - Tax amount: R$ 74,60
+   - PIX QR Code image
+   - PIX copy-paste code
+   - "Copiar Código PIX" button (turns green when clicked)
+6. Frontend polls payment status every 3 seconds
+7. On payment confirmation:
+   - Modal shows "Pagamento Confirmado!" with success icon
+   - Auto-redirects to homepage after 2 seconds
 
 **Analytics**
 - Microsoft Clarity installed (ID: tp05en9ebn)
