@@ -8,6 +8,9 @@ export default function PaymentPage() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
+    // Scroll to top quando a página carregar
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
     // Pega ID da transação da URL
     const urlParams = new URLSearchParams(window.location.search);
     const transactionId = urlParams.get('id');
@@ -17,13 +20,38 @@ export default function PaymentPage() {
       return;
     }
 
-    // Busca dados da transação
+    // Primeiro tenta usar dados corretos do sessionStorage
+    const savedPaymentData = sessionStorage.getItem('paymentData');
+    if (savedPaymentData) {
+      try {
+        const paymentData = JSON.parse(savedPaymentData);
+        setTransaction(paymentData);
+        sessionStorage.removeItem('paymentData'); // Remove após usar
+      } catch (error) {
+        console.error('Erro ao parsear payment data:', error);
+      }
+    }
+
+    // Busca dados da transação da API (pode estar errado por bug da API)
     const fetchTransaction = async () => {
       try {
         const response = await fetch(`/api/payments/${transactionId}`);
         if (response.ok) {
           const data = await response.json();
-          setTransaction(data.data || data);
+          const apiTransaction = data.data || data;
+          
+          // Se já temos dados salvos corretos, só atualiza status/expiry
+          if (savedPaymentData) {
+            const savedData = JSON.parse(savedPaymentData);
+            setTransaction({
+              ...savedData,
+              status: apiTransaction.status,
+              expires_at: apiTransaction.expires_at
+            });
+          } else {
+            // Se não temos dados salvos, usa da API
+            setTransaction(apiTransaction);
+          }
         }
       } catch (error) {
         console.error('Erro ao buscar transação:', error);

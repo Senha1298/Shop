@@ -177,6 +177,13 @@ export default function CheckoutPage() {
 
       const transaction = responseData.data || responseData;
       
+      // Salva dados corretos no sessionStorage para evitar bug da API
+      sessionStorage.setItem('paymentData', JSON.stringify({
+        ...transaction,
+        amount: total.toFixed(2),
+        correctAmount: total.toFixed(2)
+      }));
+      
       window.location.href = `/pagamento?id=${transaction.transaction_id}`;
 
     } catch (error: any) {
@@ -417,8 +424,8 @@ export default function CheckoutPage() {
             className="h-6 object-contain brightness-0 invert"
           />
         </div>
-        <div className="text-center text-[10px] text-gray-400 font-normal">
-          <p className="mb-1">© 2025 TikTok Shop. Todos os direitos reservados.</p>
+        <div className="text-center text-[8px] text-gray-500 font-normal leading-tight">
+          <p className="mb-0.5">© 2025 TikTok Shop. Todos os direitos reservados.</p>
           <p>Compra segura e protegida</p>
         </div>
       </div>
