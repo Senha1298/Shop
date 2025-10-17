@@ -7,24 +7,24 @@ export default function PriceSection() {
     <div className="px-4 pt-3 pb-2" style={{ maxWidth: '428px' }}>
       <div className="flex items-center space-x-2">
         <span className="bg-[#F52B56] text-white text-sm font-semibold px-2 py-0.5 rounded">
-          -74%
+          -50%
         </span>
         <span className="flex items-end">
           <span className="text-[#F52B56] text-sm font-bold leading-tight" style={{ marginBottom: '2px' }}>
             A partir de&nbsp;
           </span>
           <span className="text-[#F52B56] text-2xl font-bold leading-none">
-            R$ 68,90
+            R$ 139,90
           </span>
         </span>
         <i className="fas fa-ticket-alt text-[#F52B56] text-sm"></i>
         <span className="flex items-center text-[#e0e0e0] line-through text-sm font-normal whitespace-nowrap">
-          R$ 179,90
+          R$ 279,90
         </span>
       </div>
       
       <div className="text-sm text-[#757575] mt-1">
-        2x R$ 34,45
+        2x R$ 69,95
         <span className="text-[#F52B56]">
           {' '}sem juros
         </span>

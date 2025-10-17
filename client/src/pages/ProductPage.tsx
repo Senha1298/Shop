@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'wouter';
 import ImageCarousel from '@/components/ImageCarousel';
 import PriceSection from '@/components/PriceSection';
 import OffersSection from '@/components/OffersSection';
 import ReviewsSection from '@/components/ReviewsSection';
 import DescriptionSection from '@/components/DescriptionSection';
-import CheckoutModal from '@/components/CheckoutModal';
 
 export default function ProductPage() {
+  const [, setLocation] = useLocation();
   const [isVisible, setIsVisible] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [couponApplied, setCouponApplied] = useState(false);
   const [showCouponMessage, setShowCouponMessage] = useState(false);
 
   useEffect(() => {
@@ -17,9 +16,15 @@ export default function ProductPage() {
   }, []);
 
   const handleApplyCoupon = () => {
-    setCouponApplied(true);
     setShowCouponMessage(true);
-    setTimeout(() => setShowCouponMessage(false), 3000);
+    setTimeout(() => {
+      setShowCouponMessage(false);
+      setLocation('/checkout?cupom=true');
+    }, 1500);
+  };
+
+  const handleGoToCheckout = () => {
+    setLocation('/checkout');
   };
 
   const images = [
@@ -92,7 +97,7 @@ export default function ProductPage() {
         </div>
 
         {/* Ofertas */}
-        <OffersSection onApplyCoupon={handleApplyCoupon} couponApplied={couponApplied} />
+        <OffersSection onApplyCoupon={handleApplyCoupon} couponApplied={false} />
 
         {/* Avaliações */}
         <ReviewsSection />
@@ -112,22 +117,21 @@ export default function ProductPage() {
         </div>
         <div className="flex items-center space-x-2 ml-6">
           <button 
-            onClick={() => setIsModalOpen(true)}
+            onClick={handleGoToCheckout}
             className="bg-[#F2F2F2] text-black font-semibold text-sm rounded-lg px-2 py-2.5 shadow-sm"
+            data-testid="button-add-cart"
           >
             Adicionar ao carrinho
           </button>
           <button 
-            onClick={() => setIsModalOpen(true)}
+            onClick={handleGoToCheckout}
             className="bg-[#F52B56] text-white font-semibold text-sm rounded-lg px-2 py-2.5 shadow-sm ml-0"
+            data-testid="button-buy-coupon"
           >
             Comprar com cupom
           </button>
         </div>
       </div>
-
-      {/* Checkout Modal */}
-      <CheckoutModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} couponApplied={couponApplied} />
 
       {/* Mensagem de cupom aplicado */}
       {showCouponMessage && (

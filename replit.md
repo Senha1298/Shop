@@ -7,7 +7,8 @@ This is a mobile-first e-commerce product page application that replicates a Sho
 The application is built as a full-stack TypeScript project with React frontend and Express backend, designed for a mobile viewport (max-width: 428px) with a focus on pixel-perfect replication of marketplace design patterns.
 
 **Current Product:** Buggy Controle remoto a Gasolina Com Bolsa Off Road 29cc
-- Price: R$ 68,90
+- Price: R$ 139,90 (10% discount available with coupon → R$ 125,91)
+- Old price: R$ 279,90 (50% off)
 - Color variant: Vermelho (Red)
 - 6 product images in carousel
 - 5 customer reviews with images
@@ -42,6 +43,7 @@ Preferred communication style: Simple, everyday language.
 
 **Page Structure**
 - `/` - Product page with carousel, pricing, offers, reviews, and description
+- `/checkout` - Checkout page with all forms (personal data and address) and TikTok Shop branding
 - `/pagamento` - Payment page displaying PIX QR code and payment status
 - `/taxa` - Success page shown after payment confirmation
 - `/404` - Not found page
@@ -49,10 +51,18 @@ Preferred communication style: Simple, everyday language.
 **Key Frontend Components**
 - `ImageCarousel`: Custom image carousel with navigation arrows and dot indicators (6 images)
 - `PriceSection`: Displays pricing, discounts, installment options, and dynamic delivery dates
-- `OffersSection`: Coupon redemption interface (10% discount)
+- `OffersSection`: Coupon redemption interface (10% discount) - clicking "Resgatar" redirects to /checkout with coupon applied
 - `ReviewsSection`: Customer reviews and ratings (5 reviews with images)
 - `DescriptionSection`: Product description and specifications
-- `CheckoutModal`: Full checkout flow with address form, fiscal data collection, and dynamic delivery dates
+- `CheckoutPage`: Standalone checkout page with:
+  - TikTok Shop logo at the top
+  - Product summary with price
+  - Personal data form (name, CPF, phone)
+  - Delivery address form (CEP with auto-fill, street, number, city, state)
+  - Order summary with total
+  - "Fazer pedido" button at the bottom
+  - TikTok Shop footer
+- `CheckoutModal`: (DEPRECATED - replaced by CheckoutPage)
 
 **Utility Functions**
 - `getDeliveryDateRange()` in `utils/deliveryDate.ts`: Automatically calculates delivery dates as +3 to +4 days from current date
@@ -96,10 +106,20 @@ Preferred communication style: Simple, everyday language.
 - API Key: Stored in FOUR_M_API_KEY environment variable (Bearer token authentication)
 - Payment creation endpoint: `POST /payments`
 - Payment status checking: `GET /payments/{transaction_id}`
-- **Important:** API expects `amount` as STRING in REAIS (e.g., "68.90"), not centavos
+- **Important:** API expects `amount` as STRING in REAIS (e.g., "139.90" or "125.91" with coupon), not centavos
 - **Email validation:** Generated emails have accents removed for API compatibility
 - Payment page does NOT auto-redirect - user stays on payment screen with QR code
 - Manual navigation to `/taxa` success page after payment confirmation
+
+**Checkout Flow**
+1. User browses product page at `/`
+2. User can apply 10% coupon by clicking "Resgatar desconto" button
+3. User clicks "Adicionar ao carrinho" or "Comprar com cupom" → redirects to `/checkout`
+4. If coupon was applied, `/checkout?cupom=true` shows discounted price
+5. User fills personal data (name, CPF, phone) and address (CEP, street, number, city, state)
+6. User clicks "Fazer pedido" → creates PIX payment via API
+7. Redirects to `/pagamento?id={transaction_id}` with QR code
+8. After payment, user can navigate to `/taxa` success page
 
 **Analytics**
 - Microsoft Clarity installed (ID: tp05en9ebn)

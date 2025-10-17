@@ -23,12 +23,12 @@ interface FiscalData {
 
 export default function CheckoutModal({ isOpen, onClose, couponApplied }: CheckoutModalProps) {
   // Cálculos de preço
-  const productPrice = 68.90;
+  const productPrice = 139.90;
   const shippingPrice = 9.90;
   const discount = couponApplied ? productPrice * 0.10 : 0;
   const finalProductPrice = productPrice - discount;
   const total = finalProductPrice + shippingPrice;
-  const oldPrice = 179.90;
+  const oldPrice = 279.90;
   const savings = oldPrice - total;
   const deliveryRange = getDeliveryDateRange();
   const [isVisible, setIsVisible] = useState(false);
