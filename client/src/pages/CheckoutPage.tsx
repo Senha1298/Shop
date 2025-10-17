@@ -424,9 +424,9 @@ export default function CheckoutPage() {
             className="h-6 object-contain brightness-0 invert"
           />
         </div>
-        <div className="text-center text-[8px] text-gray-500 font-normal leading-tight">
-          <p className="mb-0.5">© 2025 TikTok Shop. Todos os direitos reservados.</p>
-          <p>Compra segura e protegida</p>
+        <div className="text-center text-gray-500 font-normal leading-tight">
+          <p className="mb-0.5" style={{ fontSize: '12px' }}>© 2025 TikTok Shop. Todos os direitos reservados.</p>
+          <p style={{ fontSize: '12px' }}>Compra segura e protegida</p>
         </div>
       </div>
     </div>

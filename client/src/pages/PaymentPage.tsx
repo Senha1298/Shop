@@ -253,6 +253,21 @@ export default function PaymentPage() {
           </div>
         </div>
       </div>
+
+      {/* Rodapé TikTok Shop */}
+      <div className="bg-black px-4 py-6 text-white">
+        <div className="flex items-center justify-center mb-3">
+          <img 
+            src="https://freepnglogo.com/images/all_img/1714299248tiktok-shop-logo-png-transparent.png"
+            alt="TikTok Shop"
+            className="h-6 object-contain brightness-0 invert"
+          />
+        </div>
+        <div className="text-center text-gray-500 font-normal leading-tight">
+          <p className="mb-0.5" style={{ fontSize: '12px' }}>© 2025 TikTok Shop. Todos os direitos reservados.</p>
+          <p style={{ fontSize: '12px' }}>Compra segura e protegida</p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -384,16 +384,44 @@
     inset: -1px;
   }
 
-  /* Força a aplicação correta dos font-weights - SEM quebrar ícones */
-  body, 
-  div:not([class*="fa"]):not([class*="icon"]), 
-  p, 
-  span:not([class*="fa"]):not([class*="icon"]), 
-  h1, h2, h3, h4, h5, h6,
-  button:not([class*="fa"]):not([class*="icon"]),
-  input,
-  label,
-  a:not([class*="fa"]):not([class*="icon"]) {
-    font-family: 'TikTok', sans-serif;
+  /* Força fonte TikTok em todos os elementos de texto */
+  body {
+    font-family: 'TikTok', sans-serif !important;
+  }
+  
+  * {
+    font-family: inherit;
+  }
+
+  /* Preserva ícones Font Awesome */
+  .fa, .fas, .far, .fal, .fab,
+  [class*="fa-"],
+  i[class*="fa"] {
+    font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands" !important;
+  }
+
+  /* Força pesos de fonte com especificidade máxima */
+  * .font-normal,
+  .font-normal {
+    font-weight: 400 !important;
+    font-family: 'TikTok', sans-serif !important;
+  }
+
+  * .font-medium,
+  .font-medium {
+    font-weight: 500 !important;
+    font-family: 'TikTok', sans-serif !important;
+  }
+
+  * .font-semibold,
+  .font-semibold {
+    font-weight: 600 !important;
+    font-family: 'TikTok', sans-serif !important;
+  }
+
+  * .font-bold,
+  .font-bold {
+    font-weight: 700 !important;
+    font-family: 'TikTok', sans-serif !important;
   }
 }
