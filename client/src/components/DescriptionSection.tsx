@@ -4,7 +4,7 @@ export default function DescriptionSection() {
       <div className="text-base font-semibold mb-2 text-black">
         Descrição
       </div>
-      <div className="text-sm text-black mb-2">
+      <div className="text-sm text-black mb-2 font-normal">
         Buggy Controle Remoto a Gasolina 29cc Off Road: Potência, Velocidade e Adrenalina!
         <br/><br/>
         Experimente a emoção de pilotar um buggy off-road profissional em escala reduzida! Este buggy a gasolina com motor 29cc oferece desempenho excepcional, velocidade impressionante e resistência para terrenos difíceis. Acompanha bolsa de transporte para maior praticidade.
