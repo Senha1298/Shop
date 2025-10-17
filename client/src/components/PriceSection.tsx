@@ -10,10 +10,10 @@ export default function PriceSection() {
           -50%
         </span>
         <span className="flex items-end">
-          <span className="text-[#F52B56] text-sm font-bold leading-tight" style={{ marginBottom: '2px' }}>
+          <span className="text-[#F52B56] text-sm font-semibold leading-tight" style={{ marginBottom: '2px' }}>
             A partir de&nbsp;
           </span>
-          <span className="text-[#F52B56] text-2xl font-bold leading-none">
+          <span className="text-[#F52B56] text-2xl font-semibold leading-none">
             R$ 139,90
           </span>
         </span>
@@ -23,14 +23,14 @@ export default function PriceSection() {
         </span>
       </div>
       
-      <div className="text-sm text-[#757575] mt-1">
+      <div className="text-sm text-[#757575] mt-1 font-normal">
         2x R$ 69,95
         <span className="text-[#F52B56]">
           {' '}sem juros
         </span>
       </div>
       
-      <div className="mt-1 font-medium inline-block rounded px-2 py-1" style={{ background: '#FDE5EA' }}>
+      <div className="mt-1 font-normal inline-block rounded px-2 py-1" style={{ background: '#FDE5EA' }}>
         <span className="text-[#F52B56] text-sm flex items-center">
           <i className="fas fa-ticket-alt mr-1"></i>
           Desconto de 10%, máximo de R$ 25
@@ -57,13 +57,13 @@ export default function PriceSection() {
         <span className="text-[#ffb400] text-sm">
           <i className="fas fa-star-half-alt"></i>
         </span>
-        <span className="ml-1 text-black text-sm font-medium">
+        <span className="ml-1 text-black text-sm font-normal">
           4.6
         </span>
-        <span className="ml-1 text-[#757575] text-sm">
+        <span className="ml-1 text-[#757575] text-sm font-normal">
           (32)
         </span>
-        <span className="ml-2 text-[#757575] text-sm">
+        <span className="ml-2 text-[#757575] text-sm font-normal">
           233 vendidos
         </span>
       </div>
@@ -75,11 +75,11 @@ export default function PriceSection() {
             alt="Ícone de caminhão de entrega com fundo transparente" 
             className="w-5 h-5 mr-2 object-contain"
           />
-          <span className="text-black">
+          <span className="text-black font-normal">
             Receba até {deliveryRange}
           </span>
         </div>
-        <div className="pl-7 text-sm text-[#757575] mt-0.5">
+        <div className="pl-7 text-sm text-[#757575] mt-0.5 font-normal">
           Taxa de envio: R$ 9,90
         </div>
       </div>
@@ -97,7 +97,7 @@ export default function PriceSection() {
             width="32"
           />
         </button>
-        <span className="text-sm text-black ml-2 font-semibold">
+        <span className="text-sm text-black ml-2 font-normal">
           VERMELHO
         </span>
       </div>

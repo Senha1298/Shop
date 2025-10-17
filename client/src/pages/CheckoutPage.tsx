@@ -196,10 +196,10 @@ export default function CheckoutPage() {
 
       {/* Timer de oferta */}
       <div className="bg-[#FDE5EA] px-4 py-2 flex items-center justify-between">
-        <span className="text-xs font-medium text-[#F52B56]">
+        <span className="text-xs font-normal text-[#F52B56]">
           🔥 Oferta termina em:
         </span>
-        <span className="text-sm font-bold text-[#F52B56]">
+        <span className="text-sm font-semibold text-[#F52B56]">
           {formatTime(timeLeft)}
         </span>
       </div>
@@ -213,16 +213,16 @@ export default function CheckoutPage() {
             className="w-24 h-24 object-contain mr-3"
           />
           <div className="flex-1">
-            <h3 className="text-sm font-medium mb-1">
+            <h3 className="text-sm font-normal mb-1">
               Buggy Controle remoto a Gasolina Com Bolsa Off Road 29cc
             </h3>
-            <p className="text-xs text-gray-500 mb-2">VERMELHO</p>
+            <p className="text-xs text-gray-500 mb-2 font-normal">VERMELHO</p>
             <div className="flex items-baseline">
               <span className="text-lg font-semibold text-[#F52B56] mr-2">
                 R$ {finalProductPrice.toFixed(2).replace('.', ',')}
               </span>
-              <span className="text-xs text-gray-400 line-through mr-1">R$ {oldPrice.toFixed(2).replace('.', ',')}</span>
-              <span className="text-xs text-[#F52B56]">
+              <span className="text-xs text-gray-400 line-through mr-1 font-normal">R$ {oldPrice.toFixed(2).replace('.', ',')}</span>
+              <span className="text-xs text-[#F52B56] font-normal">
                 -{Math.round((1 - finalProductPrice/oldPrice) * 100)}%
               </span>
             </div>
@@ -233,10 +233,10 @@ export default function CheckoutPage() {
       {/* Entrega */}
       <div className="px-4 py-3 border-b border-gray-200">
         <div className="flex items-center justify-between mb-1">
-          <span className="text-sm font-medium">Receba até {deliveryRange}</span>
-          <span className="text-sm font-semibold">R$ 9,90</span>
+          <span className="text-sm font-normal">Receba até {deliveryRange}</span>
+          <span className="text-sm font-normal">R$ 9,90</span>
         </div>
-        <span className="text-xs text-gray-500">Envio padrão</span>
+        <span className="text-xs text-gray-500 font-normal">Envio padrão</span>
       </div>
 
       {/* Desconto */}
@@ -245,9 +245,9 @@ export default function CheckoutPage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <i className="fas fa-ticket-alt text-[#F52B56] mr-2"></i>
-              <span className="text-sm font-medium">Desconto de 10%</span>
+              <span className="text-sm font-normal">Desconto de 10%</span>
             </div>
-            <span className="text-sm text-[#F52B56] font-semibold">- R$ {discount.toFixed(2).replace('.', ',')}</span>
+            <span className="text-sm text-[#F52B56] font-normal">- R$ {discount.toFixed(2).replace('.', ',')}</span>
           </div>
         </div>
       )}
@@ -259,7 +259,7 @@ export default function CheckoutPage() {
           <h3 className="text-base font-semibold mb-3">Dados pessoais para nota fiscal</h3>
           
           <div className="mb-3">
-            <label className="block text-sm font-medium mb-1">Nome completo</label>
+            <label className="block text-sm font-normal mb-1">Nome completo</label>
             <input 
               type="text"
               value={fiscalData.nome}
@@ -271,7 +271,7 @@ export default function CheckoutPage() {
           </div>
 
           <div className="mb-3">
-            <label className="block text-sm font-medium mb-1">CPF</label>
+            <label className="block text-sm font-normal mb-1">CPF</label>
             <input 
               type="tel"
               inputMode="numeric"
@@ -285,7 +285,7 @@ export default function CheckoutPage() {
           </div>
 
           <div className="mb-3">
-            <label className="block text-sm font-medium mb-1">Telefone</label>
+            <label className="block text-sm font-normal mb-1">Telefone</label>
             <input 
               type="tel"
               inputMode="tel"
@@ -305,7 +305,7 @@ export default function CheckoutPage() {
           
           <div className="grid grid-cols-2 gap-3 mb-3">
             <div>
-              <label className="block text-sm font-medium mb-1">CEP</label>
+              <label className="block text-sm font-normal mb-1">CEP</label>
               <input 
                 type="tel"
                 inputMode="numeric"
@@ -318,7 +318,7 @@ export default function CheckoutPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Cidade</label>
+              <label className="block text-sm font-normal mb-1">Cidade</label>
               <input 
                 type="text"
                 value={address.cidade}
@@ -331,7 +331,7 @@ export default function CheckoutPage() {
           </div>
 
           <div className="mb-3">
-            <label className="block text-sm font-medium mb-1">Rua</label>
+            <label className="block text-sm font-normal mb-1">Rua</label>
             <input 
               type="text"
               value={address.rua}
@@ -344,7 +344,7 @@ export default function CheckoutPage() {
 
           <div className="grid grid-cols-2 gap-3 mb-3">
             <div>
-              <label className="block text-sm font-medium mb-1">Número</label>
+              <label className="block text-sm font-normal mb-1">Número</label>
               <input 
                 type="text"
                 value={address.numero}
@@ -355,7 +355,7 @@ export default function CheckoutPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">UF</label>
+              <label className="block text-sm font-normal mb-1">UF</label>
               <input 
                 type="text"
                 value={address.estado}
@@ -389,7 +389,7 @@ export default function CheckoutPage() {
           )}
           <div className="flex justify-between pt-2 border-t border-gray-200">
             <span className="text-base font-semibold">Total</span>
-            <span className="text-lg font-bold text-[#F52B56]">R$ {total.toFixed(2).replace('.', ',')}</span>
+            <span className="text-lg font-semibold text-[#F52B56]">R$ {total.toFixed(2).replace('.', ',')}</span>
           </div>
           <div className="text-right mt-1">
             <span className="text-xs text-gray-500">Você economiza R$ {savings.toFixed(2).replace('.', ',')}</span>

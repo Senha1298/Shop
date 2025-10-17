@@ -11,7 +11,7 @@ export default function OffersSection({ onApplyCoupon, couponApplied }: OffersSe
           <div className="text-xs font-semibold text-black">
             10% OFF
           </div>
-          <div className="text-[10px] text-[#757575]">
+          <div className="text-[10px] text-[#757575] font-normal">
             nos pedidos acima de R$ 39
           </div>
         </div>

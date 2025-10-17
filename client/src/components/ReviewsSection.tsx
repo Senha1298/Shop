@@ -59,17 +59,17 @@ export default function ReviewsSection() {
         <span className="text-[#ffb400] text-base">
           <i className="fas fa-star-half-alt"></i>
         </span>
-        <span className="ml-2 text-black text-sm font-semibold">
+        <span className="ml-2 text-black text-sm font-normal">
           4.6
         </span>
-        <span className="ml-2 text-[#757575] text-sm">
+        <span className="ml-2 text-[#757575] text-sm font-normal">
           /5
         </span>
       </div>
       
       {reviews.map((review, index) => (
         <div key={index} className="mb-4">
-          <div className="flex items-center text-sm text-[#757575] mb-2">
+          <div className="flex items-center text-sm text-[#757575] mb-2 font-normal">
             <span className="mr-2">
               {review.name}
             </span>
@@ -83,11 +83,11 @@ export default function ReviewsSection() {
             ))}
           </div>
           
-          <div className="text-sm text-[#757575] mb-1">
+          <div className="text-sm text-[#757575] mb-1 font-normal">
             Item: {review.variant}
           </div>
           
-          <div className="text-sm text-black mb-2">
+          <div className="text-sm text-black mb-2 font-normal">
             {review.comment}
           </div>
           

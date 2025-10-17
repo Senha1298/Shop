@@ -100,8 +100,8 @@ export default function PaymentPage() {
         <div className="bg-white rounded-lg p-4 mb-4">
           <div className="flex items-start justify-between">
             <div>
-              <h2 className="text-xl font-bold mb-1">Aguardando o pagamento</h2>
-              <p className="text-2xl font-bold text-black">
+              <h2 className="text-xl font-semibold mb-1">Aguardando o pagamento</h2>
+              <p className="text-2xl font-semibold text-black">
                 R$ {parseFloat(transaction.amount || '0').toFixed(2).replace('.', ',')}
               </p>
             </div>
@@ -112,13 +112,13 @@ export default function PaymentPage() {
 
           <div className="mt-3">
             <div className="flex items-center text-sm mb-1">
-              <span className="text-gray-600">Vence em</span>
+              <span className="text-gray-600 font-normal">Vence em</span>
               <span className="ml-2 bg-[#F52B56] text-white px-2 py-0.5 rounded font-semibold">
                 {formatTime(timeLeft)}
               </span>
             </div>
-            <p className="text-sm text-gray-600">
-              Prazo <span className="font-medium text-black">{formatExpiryDate()}</span>
+            <p className="text-sm text-gray-600 font-normal">
+              Prazo <span className="font-normal text-black">{formatExpiryDate()}</span>
             </p>
           </div>
         </div>
@@ -166,19 +166,19 @@ export default function PaymentPage() {
           <div className="mt-4 bg-gray-50 rounded-lg p-3">
             <h4 className="text-sm font-semibold mb-2 text-gray-900">Como pagar com PIX Copia e Cola:</h4>
             <ol className="space-y-2">
-              <li className="flex items-start text-xs text-gray-700">
+              <li className="flex items-start text-xs text-gray-700 font-normal">
                 <span className="bg-[#F52B56] text-white rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 text-xs font-semibold">1</span>
                 <span>Clique no botão "Copiar" acima para copiar o código PIX</span>
               </li>
-              <li className="flex items-start text-xs text-gray-700">
+              <li className="flex items-start text-xs text-gray-700 font-normal">
                 <span className="bg-[#F52B56] text-white rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 text-xs font-semibold">2</span>
                 <span>Abra o app do seu banco e vá em PIX</span>
               </li>
-              <li className="flex items-start text-xs text-gray-700">
+              <li className="flex items-start text-xs text-gray-700 font-normal">
                 <span className="bg-[#F52B56] text-white rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 text-xs font-semibold">3</span>
                 <span>Escolha a opção "Pix Copia e Cola" ou "Pagar com código"</span>
               </li>
-              <li className="flex items-start text-xs text-gray-700">
+              <li className="flex items-start text-xs text-gray-700 font-normal">
                 <span className="bg-[#F52B56] text-white rounded-full w-5 h-5 flex items-center justify-center mr-2 flex-shrink-0 text-xs font-semibold">4</span>
                 <span>Cole o código copiado e confirme o pagamento</span>
               </li>
@@ -196,10 +196,10 @@ export default function PaymentPage() {
               className="w-20 h-20 object-contain rounded mr-3"
             />
             <div className="flex-1">
-              <p className="text-sm font-medium mb-1">
+              <p className="text-sm font-normal mb-1">
                 Mini máquina de lavar roupa portátil dobrável
               </p>
-              <p className="text-lg font-bold text-[#F52B56]">
+              <p className="text-lg font-semibold text-[#F52B56]">
                 R$ {parseFloat(transaction.amount || '0').toFixed(2).replace('.', ',')}
               </p>
             </div>
@@ -212,7 +212,7 @@ export default function PaymentPage() {
                 <i className="fas fa-truck text-gray-600 mr-2"></i>
                 <span className="text-sm text-gray-700">Estimativa de entrega</span>
               </div>
-              <span className="text-sm font-semibold text-gray-900">14 a 18 de outubro</span>
+              <span className="text-sm font-normal text-gray-900">14 a 18 de outubro</span>
             </div>
             <div className="flex items-center mt-2">
               <span className="text-xs text-gray-500 mr-2">Enviado via</span>
