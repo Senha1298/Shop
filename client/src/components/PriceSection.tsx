@@ -23,7 +23,7 @@ export default function PriceSection() {
         </span>
       </div>
       
-      <div className="text-sm text-[#757575] mt-1 font-normal">
+      <div className="text-sm text-[#757575] mt-1" style={{ fontWeight: 400 }}>
         2x R$ 69,95
         <span className="text-[#F52B56]">
           {' '}sem juros
@@ -57,13 +57,13 @@ export default function PriceSection() {
         <span className="text-[#ffb400] text-sm">
           <i className="fas fa-star-half-alt"></i>
         </span>
-        <span className="ml-1 text-black text-sm font-normal">
+        <span className="ml-1 text-black text-sm" style={{ fontWeight: 400 }}>
           4.6
         </span>
-        <span className="ml-1 text-[#757575] text-sm font-normal">
+        <span className="ml-1 text-[#757575] text-sm" style={{ fontWeight: 400 }}>
           (32)
         </span>
-        <span className="ml-2 text-[#757575] text-sm font-normal">
+        <span className="ml-2 text-[#757575] text-sm" style={{ fontWeight: 400 }}>
           233 vendidos
         </span>
       </div>

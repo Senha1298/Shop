@@ -4,34 +4,34 @@
 
 @font-face {
   font-family: 'TikTok';
-  src: url('/fonts/TikTokFont-Regular.woff2?v=2') format('woff2');
+  src: url('/fonts/TikTokFont-Regular.woff2?v=1760739696') format('woff2');
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
   font-family: 'TikTok';
-  src: url('/fonts/TikTokFont-Semibold.woff2?v=2') format('woff2');
+  src: url('/fonts/TikTokFont-Semibold.woff2?v=1760739696') format('woff2');
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
   font-family: 'TikTok';
-  src: url('/fonts/TikTokFont-Semibold.woff2?v=2') format('woff2');
+  src: url('/fonts/TikTokFont-Semibold.woff2?v=1760739696') format('woff2');
   font-weight: 600;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
   font-family: 'TikTok';
-  src: url('/fonts/TikTokFont-Bold.woff2?v=2') format('woff2');
+  src: url('/fonts/TikTokFont-Bold.woff2?v=1760739696') format('woff2');
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 /* LIGHT MODE */
