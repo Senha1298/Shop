@@ -102,6 +102,53 @@ export default function ReviewsSection() {
           </div>
         </div>
       ))}
+
+      {/* Separador */}
+      <div className="border-t-8 border-gray-100 my-4"></div>
+
+      {/* Avaliações da Loja */}
+      <div className="mb-3">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-lg font-semibold text-black">
+            Avaliações da loja (12,8 mil)
+          </h3>
+          <i className="fas fa-chevron-right text-gray-400"></i>
+        </div>
+
+        <div className="flex gap-2 mb-4">
+          <span className="bg-gray-100 text-black text-sm px-3 py-1.5 rounded">
+            Embalagem de qualidade (1)
+          </span>
+          <span className="bg-gray-100 text-black text-sm px-3 py-1.5 rounded">
+            Ótimo valor (1)
+          </span>
+        </div>
+      </div>
+
+      {/* Separador */}
+      <div className="border-t-8 border-gray-100 mb-4"></div>
+
+      {/* Info da Loja */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center">
+          <img 
+            src="https://raichu-uploads.s3.amazonaws.com/logo_busca-busca_8uXZzc.png"
+            alt="Logo Busca Busca"
+            className="w-16 h-16 rounded-full object-cover mr-3"
+          />
+          <div>
+            <h4 className="text-base font-semibold text-black mb-0.5">
+              Busca Busca
+            </h4>
+            <p className="text-sm text-gray-500">
+              68.8K vendido(s)
+            </p>
+          </div>
+        </div>
+        <button className="bg-gray-100 text-black font-medium text-sm px-6 py-2 rounded-md">
+          Visitar
+        </button>
+      </div>
     </div>
   );
 }
