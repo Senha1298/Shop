@@ -39,7 +39,7 @@ export default function ReviewsSection() {
 
   return (
     <div className="px-4 py-3" style={{ maxWidth: '428px' }}>
-      <div className="text-base font-semibold mb-2 text-black">
+      <div className="text-base font-bold mb-2 text-black">
         Avaliações dos clientes (32)
       </div>
       
@@ -109,17 +109,17 @@ export default function ReviewsSection() {
       {/* Avaliações da Loja */}
       <div className="mb-3">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-base font-semibold text-black">
+          <h3 className="text-base font-bold text-black">
             Avaliações da loja (12,8 mil)
           </h3>
           <i className="fas fa-chevron-right text-gray-400 text-sm"></i>
         </div>
 
         <div className="flex gap-2 mb-4">
-          <span className="bg-gray-100 text-black text-xs px-2.5 py-1 rounded">
+          <span className="bg-gray-100 text-black text-xs font-normal px-2.5 py-1 rounded">
             Embalagem de qualidade (1)
           </span>
-          <span className="bg-gray-100 text-black text-xs px-2.5 py-1 rounded">
+          <span className="bg-gray-100 text-black text-xs font-normal px-2.5 py-1 rounded">
             Ótimo valor (1)
           </span>
         </div>
@@ -137,7 +137,7 @@ export default function ReviewsSection() {
             className="w-12 h-12 rounded-full object-cover mr-3"
           />
           <div>
-            <h4 className="text-sm font-semibold text-black mb-0.5">
+            <h4 className="text-sm font-bold text-black mb-0.5">
               Busca Busca
             </h4>
             <p className="text-xs text-gray-500">
@@ -145,7 +145,7 @@ export default function ReviewsSection() {
             </p>
           </div>
         </div>
-        <button className="bg-gray-100 text-black font-medium text-xs px-5 py-1.5 rounded-md">
+        <button className="bg-gray-100 text-black font-semibold text-xs px-5 py-1.5 rounded-md">
           Visitar
         </button>
       </div>

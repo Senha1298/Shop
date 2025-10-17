@@ -1,7 +1,7 @@
 export default function DescriptionSection() {
   return (
     <div className="px-4 pb-24" style={{ maxWidth: '428px' }}>
-      <div className="text-base font-semibold mb-2 text-black">
+      <div className="text-base font-bold mb-2 text-black">
         Descrição
       </div>
       <div className="text-sm text-black mb-2 font-normal">

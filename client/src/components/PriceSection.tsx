@@ -6,7 +6,7 @@ export default function PriceSection() {
   return (
     <div className="px-4 pt-3 pb-2" style={{ maxWidth: '428px' }}>
       <div className="flex items-center space-x-2">
-        <span className="bg-[#F52B56] text-white text-sm font-semibold px-2 py-0.5 rounded">
+        <span className="bg-[#F52B56] text-white text-sm font-bold px-2 py-0.5 rounded">
           -50%
         </span>
         <span className="flex items-end">
@@ -37,7 +37,7 @@ export default function PriceSection() {
         </span>
       </div>
       
-      <div className="mt-2 font-semibold text-base leading-5 text-black">
+      <div className="mt-2 font-bold text-base leading-5 text-black">
         Buggy Controle remoto a Gasolina Com Bolsa Off Road 29cc
       </div>
       
