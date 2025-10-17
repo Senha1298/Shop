@@ -39,6 +39,9 @@ export default function CheckoutPage() {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    // Scroll to top quando a página carregar
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
     setTimeLeft(6 * 3600 + 46 * 60 + 32);
     
     if (timerRef.current) {
@@ -411,10 +414,10 @@ export default function CheckoutPage() {
           <img 
             src="https://freepnglogo.com/images/all_img/1714299248tiktok-shop-logo-png-transparent.png"
             alt="TikTok Shop"
-            className="h-8 object-contain brightness-0 invert"
+            className="h-6 object-contain brightness-0 invert"
           />
         </div>
-        <div className="text-center text-xs text-gray-400">
+        <div className="text-center text-[10px] text-gray-400 font-normal">
           <p className="mb-1">© 2025 TikTok Shop. Todos os direitos reservados.</p>
           <p>Compra segura e protegida</p>
         </div>
