@@ -6,45 +6,59 @@ export default function DescriptionSection() {
       </div>
       <div className="text-sm text-black mb-2">
         <span className="font-semibold">
-          Mini Máquina de Lavar Dobrável: Praticidade e Eficiência na Lavagem de Pequenos Itens
+          Buggy Controle Remoto a Gasolina 29cc Off Road: Potência, Velocidade e Adrenalina!
         </span>
         <br/><br/>
-        Agora, lavar pequenas peças como roupas íntimas, meias, roupinhas de bebê e pequenos panos ficou muito mais fácil. Com a Mini Máquina de Lavar, você garante uma lavagem eficiente e de qualidade.
+        Experimente a emoção de pilotar um buggy off-road profissional em escala reduzida! Este buggy a gasolina com motor 29cc oferece desempenho excepcional, velocidade impressionante e resistência para terrenos difíceis. Acompanha bolsa de transporte para maior praticidade.
         <br/><br/>
         <span className="font-semibold">
           Descrição do Produto:
         </span>
         <br/>
-        Esta mini máquina é integrada a um balde dobrável e possui uma potência de 40W. Ela vem com um sistema de escoamento localizado na parte traseira, permitindo o despejo da água sem necessidade de virar o balde e correr o risco de derrubar suas roupas. O design dobrável oferece praticidade para armazenamento e transporte.
+        Este buggy profissional possui motor a gasolina 2 tempos de 29cc com partida elétrica, sistema de suspensão independente nas 4 rodas e pneus de borracha maciça para máxima aderência em qualquer terreno. O controle remoto de longo alcance (até 100 metros) permite controle total do veículo com precisão.
         <br/><br/>
         <span className="font-semibold">
-          Características Inteligentes:
+          Características Principais:
         </span>
         <br/>
-        Fácil de Usar: Toque o botão touch por 2 segundos para acender o LED vermelho. Toque novamente para iniciar a lavagem. Após 10 minutos, a máquina para automaticamente e emite um sinal.
+        Motor Potente: Motor a gasolina 29cc de alto desempenho com partida elétrica
         <br/>
-        Sistema de Escoamento: Permite o escoamento da água sem precisar inclinar o balde.
+        Controle Remoto: Sistema de rádio controle 2.4GHz com alcance de até 100 metros
+        <br/>
+        Suspensão: Sistema de suspensão independente nas 4 rodas para terrenos irregulares
+        <br/>
+        Velocidade: Atinge até 45 km/h em superfícies planas
+        <br/>
+        Chassi Reforçado: Estrutura em alumínio aeronáutico ultra-resistente
         <br/><br/>
         <span className="font-semibold">
-          Especificações:
+          Especificações Técnicas:
         </span>
         <br/>
-        Material: Polipropileno + Silicone
+        Motor: 29cc 2 tempos a gasolina
         <br/>
-        Voltagem: Bivolt
+        Combustível: Gasolina + óleo 2T (mistura 25:1)
         <br/>
-        Nota: O produto é testado antes do envio para garantir a qualidade, podendo apresentar marcas de água residuais devido aos testes realizados.
+        Autonomia: Aproximadamente 30 minutos por tanque
+        <br/>
+        Escala: 1/5
+        <br/>
+        Dimensões: 80cm x 50cm x 30cm
+        <br/>
+        Peso: Aproximadamente 12kg
+        <br/>
+        Inclui: Buggy, controle remoto, bolsa de transporte, ferramentas básicas e manual
         <br/><br/>
         <span className="font-semibold">
           Garantia:
         </span>
         <br/>
-        Tempo de Garantia: 1 mês
+        Tempo de Garantia: 3 meses
         <br/>
         Tipo de Garantia: Fornecedor
         <br/>
         <span className="text-[#bdbdbd]">
-          *Imagens meramente ilustrativas.
+          *Imagens meramente ilustrativas. Produto testado antes do envio.
         </span>
       </div>
     </div>

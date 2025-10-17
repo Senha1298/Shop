@@ -1,4 +1,8 @@
+import { getDeliveryDateRange } from '@/utils/deliveryDate';
+
 export default function PriceSection() {
+  const deliveryRange = getDeliveryDateRange();
+
   return (
     <div className="px-4 pt-3 pb-2" style={{ maxWidth: '428px' }}>
       <div className="flex items-center space-x-2">
@@ -34,7 +38,7 @@ export default function PriceSection() {
       </div>
       
       <div className="mt-2 font-semibold text-base leading-5 text-black">
-        Mini máquina de lavar roupa portátil dobrável moderna máquina de lavar automática roupa inte...
+        Buggy Controle remoto a Gasolina Com Bolsa Off Road 29cc
       </div>
       
       <div className="flex items-center mt-1">
@@ -72,7 +76,7 @@ export default function PriceSection() {
             className="w-5 h-5 mr-2 object-contain"
           />
           <span className="text-black">
-            Receba até 14–18 de out
+            Receba até {deliveryRange}
           </span>
         </div>
         <div className="pl-7 text-sm text-[#757575] mt-0.5">
@@ -86,15 +90,15 @@ export default function PriceSection() {
           className="rounded-full border-4 border-[#F52B56] p-0.5 focus:outline-none"
         >
           <img 
-            alt="Mini máquina de lavar cor roxa, vista frontal, fundo branco" 
+            alt="Buggy controle remoto a gasolina vermelho, vista frontal, fundo branco" 
             className="w-8 h-8 rounded-full object-cover" 
             height="32" 
-            src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2dab30m5z755d.webp" 
+            src="https://ae-pic-a1.aliexpress-media.com/kf/S964945ee819e41c68c769ba1eccbc8981.jpg_640x640q75.jpg_.avif" 
             width="32"
           />
         </button>
         <span className="text-sm text-black ml-2 font-semibold">
-          ROXO
+          VERMELHO
         </span>
       </div>
     </div>

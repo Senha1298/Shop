@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { getDeliveryDateRange } from '@/utils/deliveryDate';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -29,6 +30,7 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
   const total = finalProductPrice + shippingPrice;
   const oldPrice = 179.90;
   const savings = oldPrice - total;
+  const deliveryRange = getDeliveryDateRange();
   const [isVisible, setIsVisible] = useState(false);
   const [address, setAddress] = useState<Address>({
     cep: '',
@@ -207,7 +209,7 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
         customer_email: randomEmail,
         customer_cpf: fiscalData.cpf.replace(/\D/g, ''),
         customer_phone: fiscalData.telefone.replace(/\D/g, ''),
-        description: 'Mini máquina de lavar portátil'
+        description: 'Buggy Controle remoto a Gasolina Com Bolsa Off Road 29cc'
       };
 
       // Cria transação via backend (evita CORS)
@@ -269,15 +271,15 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
         {/* Produto */}
         <div className="px-3 py-2 flex items-start border-b border-gray-200">
           <img 
-            src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2dab30m5z755d.webp"
-            alt="Mini máquina de lavar"
+            src="https://ae-pic-a1.aliexpress-media.com/kf/S964945ee819e41c68c769ba1eccbc8981.jpg_640x640q75.jpg_.avif"
+            alt="Buggy controle remoto a gasolina"
             className="w-20 h-20 object-contain mr-2"
           />
           <div className="flex-1">
             <h3 className="text-xs font-normal mb-0.5">
-              Mini máquina de lavar roupa portátil dobrá...
+              Buggy Controle remoto a Gasolina Com Bolsa...
             </h3>
-            <p className="text-[10px] text-gray-500 mb-1">ROXO COM CESTO 6,5L</p>
+            <p className="text-[10px] text-gray-500 mb-1">VERMELHO</p>
             <div className="flex items-center text-[10px] mb-1" style={{ color: '#8B6914' }}>
               <span className="mr-1 text-xs">📦</span>
               <span>Devolução gratuita</span>
@@ -313,7 +315,7 @@ export default function CheckoutModal({ isOpen, onClose, couponApplied }: Checko
         {/* Entrega */}
         <div className="px-3 py-2 border-b border-gray-200">
           <div className="flex items-center justify-between mb-0.5">
-            <span className="text-xs font-medium">Receba até 14-18 de out</span>
+            <span className="text-xs font-medium">Receba até {deliveryRange}</span>
             <span className="text-xs font-semibold">R$ 9,90</span>
           </div>
           <span className="text-[10px] text-gray-500">Envio padrão</span>

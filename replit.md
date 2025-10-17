@@ -6,6 +6,13 @@ This is a mobile-first e-commerce product page application that replicates a Sho
 
 The application is built as a full-stack TypeScript project with React frontend and Express backend, designed for a mobile viewport (max-width: 428px) with a focus on pixel-perfect replication of marketplace design patterns.
 
+**Current Product:** Buggy Controle remoto a Gasolina Com Bolsa Off Road 29cc
+- Price: R$ 68,90
+- Color variant: Vermelho (Red)
+- 6 product images in carousel
+- 5 customer reviews with images
+- Dynamic delivery date calculation (3-4 days from current date)
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
@@ -40,12 +47,15 @@ Preferred communication style: Simple, everyday language.
 - `/404` - Not found page
 
 **Key Frontend Components**
-- `ImageCarousel`: Custom image carousel with navigation arrows and dot indicators
-- `PriceSection`: Displays pricing, discounts, and installment options
-- `OffersSection`: Coupon redemption interface
-- `ReviewsSection`: Customer reviews and ratings
+- `ImageCarousel`: Custom image carousel with navigation arrows and dot indicators (6 images)
+- `PriceSection`: Displays pricing, discounts, installment options, and dynamic delivery dates
+- `OffersSection`: Coupon redemption interface (10% discount)
+- `ReviewsSection`: Customer reviews and ratings (5 reviews with images)
 - `DescriptionSection`: Product description and specifications
-- `CheckoutModal`: Full checkout flow with address form and fiscal data collection
+- `CheckoutModal`: Full checkout flow with address form, fiscal data collection, and dynamic delivery dates
+
+**Utility Functions**
+- `getDeliveryDateRange()` in `utils/deliveryDate.ts`: Automatically calculates delivery dates as +3 to +4 days from current date
 
 ### Backend Architecture
 
@@ -86,10 +96,15 @@ Preferred communication style: Simple, everyday language.
 - API Key: Stored in FOUR_M_API_KEY environment variable (Bearer token authentication)
 - Payment creation endpoint: `POST /payments`
 - Payment status checking: `GET /payments/{transaction_id}`
-- Polling mechanism: Status checks every 1-5 seconds for payment confirmation
-- Success redirect flow to `/taxa` page upon payment confirmation
-- **Important:** API expects `amount` as STRING in REAIS (e.g., "99.80"), not centavos
+- **Important:** API expects `amount` as STRING in REAIS (e.g., "68.90"), not centavos
 - **Email validation:** Generated emails have accents removed for API compatibility
+- Payment page does NOT auto-redirect - user stays on payment screen with QR code
+- Manual navigation to `/taxa` success page after payment confirmation
+
+**Analytics**
+- Microsoft Clarity installed (ID: tp05en9ebn)
+- Session recording and heatmap tracking enabled
+- Script injected in `client/index.html`
 
 **Third-Party Services**
 - ViaCEP API for Brazilian postal code lookup (implied by address form with CEP field)

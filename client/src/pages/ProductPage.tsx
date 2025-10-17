@@ -24,20 +24,28 @@ export default function ProductPage() {
 
   const images = [
     {
-      src: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2dab30m5z755d.webp",
-      alt: "Mini máquina de lavar roupa portátil dobrável cor roxa, vista frontal, produto inteiro, fundo branco"
+      src: "https://ae-pic-a1.aliexpress-media.com/kf/S964945ee819e41c68c769ba1eccbc8981.jpg_640x640q75.jpg_.avif",
+      alt: "Buggy controle remoto a gasolina vermelho, vista frontal, produto completo, fundo branco"
     },
     {
-      src: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2d9v0et8iticf.webp",
-      alt: "Mini máquina de lavar roupa portátil dobrável cor roxa, vista lateral, produto inteiro, fundo branco"
+      src: "https://ae-pic-a1.aliexpress-media.com/kf/S3edcac9db7944c9186d550d2b625e239A.jpg_640x640q75.jpg_.avif",
+      alt: "Buggy controle remoto a gasolina vermelho, vista lateral, produto completo, fundo branco"
     },
     {
-      src: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2dab30mlf7q60.webp",
-      alt: "Mini máquina de lavar roupa portátil dobrável cor roxa, vista superior, produto inteiro, fundo branco"
+      src: "https://ae-pic-a1.aliexpress-media.com/kf/S3911ca6e90304ce1a881631d30ec103a8.jpg_640x640q75.jpg_.avif",
+      alt: "Buggy controle remoto a gasolina vermelho, vista superior, detalhes do chassi, fundo branco"
     },
     {
-      src: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m2d9v0et9xdyf9.webp",
-      alt: "Mini máquina de lavar roupa portátil dobrável cor roxa, detalhes do interior, fundo branco"
+      src: "https://ae-pic-a1.aliexpress-media.com/kf/Sd9b4a29817aa4c05b36ea06d8c43238bj.jpg_640x640q75.jpg_.avif",
+      alt: "Buggy controle remoto a gasolina vermelho, detalhes do motor, fundo branco"
+    },
+    {
+      src: "https://ae-pic-a1.aliexpress-media.com/kf/S08be454ef1064d878b6e75c062193b9eU.jpg_640x640q75.jpg_.avif",
+      alt: "Buggy controle remoto a gasolina vermelho com bolsa de transporte, fundo branco"
+    },
+    {
+      src: "https://ae-pic-a1.aliexpress-media.com/kf/S2169cbd4881e4ed188a2f5c0f3e15d97X.jpg_640x640q75.jpg_.avif",
+      alt: "Buggy controle remoto a gasolina vermelho, close-up dos detalhes, fundo branco"
     }
   ];
 
