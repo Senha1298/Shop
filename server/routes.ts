@@ -73,7 +73,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Verificar status da transação (sem autenticação necessária)
+  // Verificar status da transação - ENDPOINT PÚBLICO SEM AUTH
   app.get('/api/transactions/:id', async (req, res) => {
     try {
       const { id } = req.params;
@@ -82,7 +82,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const data = await response.json();
       
       console.log('🔍 RESPOSTA COMPLETA DA TRANSAÇÃO:', JSON.stringify(data, null, 2));
-      console.log('🎯 Status:', data.status);
+      console.log('🎯 Status da transação:', data.status);
       
       if (!response.ok) {
         return res.status(response.status).json(data);
@@ -90,7 +90,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       res.json(data);
     } catch (error: any) {
-      console.error('Erro ao verificar transação:', error);
+      console.error('❌ Erro ao verificar transação:', error);
       res.status(500).json({ error: 'Erro ao verificar transação' });
     }
   });
