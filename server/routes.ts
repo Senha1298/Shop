@@ -73,6 +73,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Verificar status da transação (sem autenticação necessária)
+  app.get('/api/transactions/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      
+      const response = await fetch(`${FOUR_M_API_URL}/transactions/${id}`);
+      const data = await response.json();
+      
+      console.log('🔍 Status da transação', id, ':', data.status);
+      
+      if (!response.ok) {
+        return res.status(response.status).json(data);
+      }
+
+      res.json(data);
+    } catch (error: any) {
+      console.error('Erro ao verificar transação:', error);
+      res.status(500).json({ error: 'Erro ao verificar transação' });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;
