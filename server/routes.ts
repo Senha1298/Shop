@@ -81,7 +81,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const response = await fetch(`${FOUR_M_API_URL}/transactions/${id}`);
       const data = await response.json();
       
-      console.log('🔍 Status da transação', id, ':', data.status);
+      console.log('🔍 RESPOSTA COMPLETA DA TRANSAÇÃO:', JSON.stringify(data, null, 2));
+      console.log('🎯 Status:', data.status);
       
       if (!response.ok) {
         return res.status(response.status).json(data);

@@ -68,11 +68,17 @@ export default function PaymentPage() {
         if (statusResponse.ok) {
           const statusData = await statusResponse.json();
           
+          console.log('🔍 Verificando status:', statusData.status);
+          
           // Verifica se o pagamento foi confirmado
           if (statusData.status === 'paid') {
-            console.log('✅ Pagamento confirmado! Redirecionando para /taxa');
+            console.log('✅ PAGAMENTO CONFIRMADO! Redirecionando para /taxa em 500ms...');
             clearInterval(statusCheckInterval);
-            window.location.href = '/taxa';
+            
+            // Pequeno delay para garantir que o log aparece
+            setTimeout(() => {
+              window.location.href = '/taxa';
+            }, 500);
           }
         }
       } catch (error) {
