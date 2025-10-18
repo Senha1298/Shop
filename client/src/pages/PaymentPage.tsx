@@ -60,8 +60,29 @@ export default function PaymentPage() {
 
     fetchTransaction();
 
-    // REMOVIDO: Verificação automática de status que causava redirecionamento indevido
-    // A página agora permanece aqui até o usuário sair manualmente
+    // Verificação automática de status a cada 1 segundo
+    const statusCheckInterval = setInterval(async () => {
+      try {
+        const statusResponse = await fetch(`https://app.4mpagamentos.com/api/v1/transactions/${transactionId}`);
+        
+        if (statusResponse.ok) {
+          const statusData = await statusResponse.json();
+          
+          // Verifica se o pagamento foi confirmado
+          if (statusData.status === 'paid') {
+            console.log('Pagamento confirmado! Redirecionando para /taxa');
+            clearInterval(statusCheckInterval);
+            window.location.href = '/taxa';
+          }
+        }
+      } catch (error) {
+        // Falha silenciosa - não mostra nada ao usuário
+        console.error('Erro ao verificar status:', error);
+      }
+    }, 1000); // Verifica a cada 1 segundo
+
+    // Limpa o intervalo quando o componente for desmontado
+    return () => clearInterval(statusCheckInterval);
   }, [setLocation]);
 
   // Timer de expiração
