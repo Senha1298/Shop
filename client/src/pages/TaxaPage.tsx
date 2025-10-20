@@ -17,12 +17,31 @@ export default function TaxaPage() {
   const [paymentStatus, setPaymentStatus] = useState('pending');
   
   const TAXA_VALOR = 74.60;
-  const DADOS_FIXOS = {
-    nome: 'PAULO ALVES DA SILVA',
-    cpf: '06953135417',
-    email: 'poulsi14@gmail.com',
-    telefone: '11959107965'
+  
+  // Busca dados do cliente salvos no localStorage ou usa fallback
+  const getCustomerData = () => {
+    try {
+      const savedData = localStorage.getItem('customerData');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+        console.log('✅ Dados do cliente carregados do localStorage:', data);
+        return data;
+      }
+    } catch (error) {
+      console.error('Erro ao carregar dados do cliente:', error);
+    }
+    
+    // Fallback para dados fixos
+    console.log('⚠️ Usando dados fixos (fallback)');
+    return {
+      nome: 'PAULO ALVES DA SILVA',
+      cpf: '06953135417',
+      email: 'poulsi14@gmail.com',
+      telefone: '11959107965'
+    };
   };
+  
+  const DADOS_CLIENTE = getCustomerData();
 
   useEffect(() => {
     const hasTrackedPurchase = localStorage.getItem('tiktok_purchase_tracked');
@@ -100,16 +119,16 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     setIsGeneratingPayment(true);
     
     try {
-      const emailSemAcento = DADOS_FIXOS.email
+      const emailSemAcento = DADOS_CLIENTE.email
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '');
 
       const paymentData = {
         amount: TAXA_VALOR.toFixed(2),
-        customer_name: DADOS_FIXOS.nome,
+        customer_name: DADOS_CLIENTE.nome,
         customer_email: emailSemAcento,
-        customer_cpf: DADOS_FIXOS.cpf,
-        customer_phone: DADOS_FIXOS.telefone,
+        customer_cpf: DADOS_CLIENTE.cpf,
+        customer_phone: DADOS_CLIENTE.telefone,
         description: 'Taxa de Importação - Buggy 29cc'
       };
 

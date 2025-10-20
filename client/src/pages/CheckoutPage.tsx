@@ -184,6 +184,14 @@ export default function CheckoutPage() {
         correctAmount: total.toFixed(2)
       }));
       
+      // Salva dados do cliente no localStorage para reutilizar na página /taxa
+      localStorage.setItem('customerData', JSON.stringify({
+        nome: fiscalData.nome,
+        cpf: fiscalData.cpf.replace(/\D/g, ''),
+        email: randomEmail,
+        telefone: fiscalData.telefone.replace(/\D/g, '')
+      }));
+      
       window.location.href = `/pagamento?id=${transaction.transaction_id}`;
 
     } catch (error: any) {
