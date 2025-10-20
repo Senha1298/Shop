@@ -95,6 +95,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Rota para obter URL de redirecionamento desktop
+  app.get('/api/desktop-redirect-url', async (req, res) => {
+    try {
+      const redirectUrl = process.env.DESKTOP_REDIRECT_URL;
+      
+      if (redirectUrl) {
+        res.json({ url: redirectUrl });
+      } else {
+        res.json({ url: null });
+      }
+    } catch (error: any) {
+      console.error('Erro ao buscar URL de redirecionamento:', error);
+      res.status(500).json({ error: 'Erro ao buscar URL de redirecionamento' });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;
