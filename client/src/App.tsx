@@ -8,6 +8,7 @@ import ProductPage from "@/pages/ProductPage";
 import CheckoutPage from "@/pages/CheckoutPage";
 import PaymentPage from "@/pages/PaymentPage";
 import TaxaPage from "@/pages/TaxaPage";
+import AcompanhamentoPage from "@/pages/AcompanhamentoPage";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/checkout" component={CheckoutPage} />
       <Route path="/pagamento" component={PaymentPage} />
       <Route path="/taxa" component={TaxaPage} />
+      <Route path="/acompanhamento" component={AcompanhamentoPage} />
       <Route component={NotFound} />
     </Switch>
   );

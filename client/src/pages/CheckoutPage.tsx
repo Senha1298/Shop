@@ -192,6 +192,15 @@ export default function CheckoutPage() {
         telefone: fiscalData.telefone.replace(/\D/g, '')
       }));
       
+      // Salva endereço do cliente no localStorage para página de acompanhamento
+      localStorage.setItem('customerAddress', JSON.stringify({
+        cep: address.cep,
+        rua: address.rua,
+        numero: address.numero,
+        cidade: address.cidade,
+        estado: address.estado
+      }));
+      
       window.location.href = `/pagamento?id=${transaction.transaction_id}`;
 
     } catch (error: any) {

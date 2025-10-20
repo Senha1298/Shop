@@ -91,27 +91,34 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   useEffect(() => {
     if (!transactionId || paymentStatus === 'paid') return;
 
-    const interval = setInterval(async () => {
+    // Verificação de status a cada 1 segundo (igual à página de pagamento)
+    const statusCheckInterval = setInterval(async () => {
       try {
-        const response = await fetch(`/api/payments/${transactionId}`);
-        const data = await response.json();
+        const statusResponse = await fetch(`/api/transactions/${transactionId}`);
         
-        const paymentData = data.data || data;
-        
-        if (paymentData.status === 'paid' || paymentData.status === 'approved') {
-          setPaymentStatus('paid');
-          clearInterval(interval);
+        if (statusResponse.ok) {
+          const statusData = await statusResponse.json();
           
-          setTimeout(() => {
-            window.location.href = '/';
-          }, 2000);
+          console.log('🔍 Verificando status da taxa:', statusData.status);
+          
+          // Verifica se o pagamento foi confirmado
+          if (statusData.status === 'paid') {
+            console.log('✅ TAXA PAGA! Redirecionando para /acompanhamento em 500ms...');
+            setPaymentStatus('paid');
+            clearInterval(statusCheckInterval);
+            
+            // Pequeno delay para garantir que o log aparece
+            setTimeout(() => {
+              window.location.href = '/acompanhamento';
+            }, 500);
+          }
         }
       } catch (error) {
-        console.error('Erro ao verificar status:', error);
+        // Falha silenciosa - não mostra nada ao usuário
       }
-    }, 3000);
+    }, 1000); // Verifica a cada 1 segundo
 
-    return () => clearInterval(interval);
+    return () => clearInterval(statusCheckInterval);
   }, [transactionId, paymentStatus]);
 
   const handleRegularizar = async () => {
