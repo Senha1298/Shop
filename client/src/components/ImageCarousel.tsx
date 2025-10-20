@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 interface ImageCarouselProps {
   images: Array<{ src: string; alt: string }>;
@@ -7,6 +7,8 @@ interface ImageCarouselProps {
 export default function ImageCarousel({ images }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const total = images.length;
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
 
   const showImage = (idx: number) => {
     setCurrentIndex(idx);
@@ -20,9 +22,40 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
     setCurrentIndex((current) => (current + 1) % total);
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(distance) > minSwipeDistance) {
+      if (distance > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+
+    touchStartX.current = 0;
+    touchEndX.current = 0;
+  };
+
   return (
     <div className="pt-12 relative" style={{ maxWidth: '428px' }}>
-      <div className="relative w-full h-[320px] flex items-center justify-center overflow-hidden">
+      <div 
+        className="relative w-full h-[320px] flex items-center justify-center overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {images.map((image, idx) => (
           <img
             key={idx}
