@@ -98,6 +98,27 @@ Preferred communication style: Simple, everyday language.
 - User entity with id, username, and password fields
 - UUID generation for user IDs
 
+### Environment Variables
+
+**Required Secrets (Production & Development)**
+- `FOUR_M_API_KEY`: API key for 4mpagamentos payment gateway (Bearer token)
+- `TIKTOK_PIXEL_ID`: TikTok Pixel ID for conversion tracking (e.g., "D3A8DARC77UFKOQ7M5PG")
+- `SESSION_SECRET`: Secret key for session management
+- `DESKTOP_REDIRECT_URL`: URL to redirect desktop users (optional)
+
+**How to Configure:**
+1. **Replit:** Add secrets in the "Secrets" tab (Environment variables)
+2. **Heroku:** Use `heroku config:set VARIABLE_NAME=value` or dashboard Settings → Config Vars
+3. **Local Development:** Create `.env` file in project root
+
+**Example .env file:**
+```bash
+FOUR_M_API_KEY=your_4mpagamentos_api_key_here
+TIKTOK_PIXEL_ID=D3A8DARC77UFKOQ7M5PG
+SESSION_SECRET=your_session_secret_here
+DESKTOP_REDIRECT_URL=https://example.com
+```
+
 ### External Dependencies
 
 **Payment Gateway Integration**
@@ -152,6 +173,17 @@ Preferred communication style: Simple, everyday language.
 - Microsoft Clarity installed (ID: tp05en9ebn)
 - Session recording and heatmap tracking enabled
 - Script injected in `client/index.html`
+
+**TikTok Pixel Integration**
+- TikTok Pixel ID: Stored in TIKTOK_PIXEL_ID environment variable
+- Loaded dynamically from backend endpoint: `GET /api/tiktok-pixel-id`
+- Purchase tracking event fired on `/taxa` page
+- Event details:
+  - Event type: `CompletePayment`
+  - Product: Buggy Controle Remoto a Gasolina 29cc
+  - Value: R$ 139,90 (BRL)
+  - Deduplication: Uses localStorage flag `tiktok_purchase_tracked` to prevent duplicates
+- Graceful degradation: If pixel ID not configured, tracking is silently disabled
 
 **Third-Party Services**
 - ViaCEP API for Brazilian postal code lookup (implied by address form with CEP field)
