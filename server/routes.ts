@@ -111,6 +111,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Rota para obter TikTok Pixel ID
+  app.get('/api/tiktok-pixel-id', async (req, res) => {
+    try {
+      const pixelId = process.env.TIKTOK_PIXEL_ID;
+      
+      if (pixelId) {
+        res.json({ pixelId });
+      } else {
+        res.json({ pixelId: null });
+      }
+    } catch (error: any) {
+      console.error('Erro ao buscar TikTok Pixel ID:', error);
+      res.status(500).json({ error: 'Erro ao buscar TikTok Pixel ID' });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;
