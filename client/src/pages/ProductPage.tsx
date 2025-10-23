@@ -13,6 +13,20 @@ export default function ProductPage() {
 
   useEffect(() => {
     setTimeout(() => setIsVisible(true), 100);
+
+    // Carrega o script do player de vídeo
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://scripts.converteai.net/7f004cb4-ff4b-48f5-8be2-7f09adfd539d/players/68fa63fbb2557cc502b70170/v4/player.js';
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      // Limpeza: remove o script quando o componente desmontar
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
   }, []);
 
   const handleApplyCoupon = () => {

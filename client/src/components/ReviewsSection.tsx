@@ -1,3 +1,14 @@
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'vturb-smartplayer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        id?: string;
+        style?: React.CSSProperties;
+      };
+    }
+  }
+}
+
 export default function ReviewsSection() {
   const reviews = [
     {
@@ -148,6 +159,11 @@ export default function ReviewsSection() {
         <button className="bg-gray-100 text-black font-semibold text-xs px-5 py-1.5 rounded-md">
           Visitar
         </button>
+      </div>
+
+      {/* Vídeo Embebido */}
+      <div className="mt-4">
+        <vturb-smartplayer id="vid-68fa63fbb2557cc502b70170" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer>
       </div>
     </div>
   );
