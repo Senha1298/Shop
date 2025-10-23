@@ -92,10 +92,10 @@ export default function CheckoutPage() {
     if (numbers.length === 8) {
       setIsLoadingCep(true);
       try {
-        const response = await fetch(`https://viacep.com.br/ws/${numbers}/json/`);
+        const response = await fetch(`https://opencep.com/v1/${numbers}.json`);
         const data = await response.json();
         
-        if (!data.erro) {
+        if (response.ok && data.cep) {
           setAddress({
             ...address,
             cep: formatted,

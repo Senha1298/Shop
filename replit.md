@@ -186,7 +186,9 @@ DESKTOP_REDIRECT_URL=https://example.com
 - Graceful degradation: If pixel ID not configured, tracking is silently disabled
 
 **Third-Party Services**
-- ViaCEP API for Brazilian postal code lookup (implied by address form with CEP field)
+- OpenCEP API for Brazilian postal code lookup (`https://opencep.com/v1/{cep}.json`)
+  - Used in checkout page for automatic address filling
+  - Returns: logradouro (street), localidade (city), uf (state), bairro (neighborhood)
 - Font Awesome 5.15.3 for icons
 - Google Fonts for Inter font family (referenced in design guidelines)
 
