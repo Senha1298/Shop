@@ -245,13 +245,13 @@ export default function PaymentPage() {
           <h3 className="font-semibold mb-3">Resumo do pedido</h3>
           <div className="flex items-center mb-4">
             <img 
-              src="https://ae-pic-a1.aliexpress-media.com/kf/S964945ee819e41c68c769ba1eccbc8981.jpg_640x640q75.jpg_.avif"
-              alt="Buggy controle remoto a gasolina"
+              src="https://http2.mlstatic.com/D_NQ_NP_2X_913908-MLB88641214390_072025-F-escavadeira-infantil-eletrica-12v-mini-trator-remoto.webp"
+              alt="Escavadeira infantil elétrica 12V amarela"
               className="w-20 h-20 object-contain rounded mr-3"
             />
             <div className="flex-1">
               <p className="text-sm font-normal mb-1">
-                Buggy Controle remoto a Gasolina Com Bolsa Off Road 29cc
+                Escavadeira Infantil Elétrica 12V Mini Trator com Controle Remoto
               </p>
               <p className="text-lg font-semibold text-[#F52B56]">
                 R$ {parseFloat(transaction.amount || '0').toFixed(2).replace('.', ',')}

@@ -84,14 +84,14 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             
             window.ttq.track('CompletePayment', {
               content_type: 'product',
-              content_id: 'buggy-29cc',
-              content_name: 'Buggy Controle Remoto a Gasolina 29cc',
+              content_id: 'escavadeira-infantil-12v',
+              content_name: 'Escavadeira Infantil Elétrica 12V Mini Trator com Controle Remoto',
               currency: 'BRL',
-              value: 139.90
+              value: 189.90
             });
             
             localStorage.setItem('tiktok_purchase_tracked', 'true');
-            console.log('🎯 TikTok Purchase Event disparado: R$ 139,90');
+            console.log('🎯 TikTok Purchase Event disparado: R$ 189,90');
           }
         }, 100);
 
@@ -152,7 +152,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         customer_email: emailSemAcento,
         customer_cpf: DADOS_CLIENTE.cpf,
         customer_phone: DADOS_CLIENTE.telefone,
-        description: 'Taxa de Importação - Buggy 29cc'
+        description: 'Taxa de Importação - Escavadeira Infantil 12V'
       };
 
       const response = await fetch('/api/payments', {
