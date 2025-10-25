@@ -161,10 +161,6 @@ export default function ReviewsSection() {
         </button>
       </div>
 
-      {/* Vídeo Embebido */}
-      <div className="mt-4">
-        <vturb-smartplayer id="vid-68fa63fbb2557cc502b70170" style={{ display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px' }}></vturb-smartplayer>
-      </div>
     </div>
   );
 }

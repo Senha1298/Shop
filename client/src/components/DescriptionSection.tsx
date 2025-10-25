@@ -7,7 +7,7 @@ export default function DescriptionSection() {
       <div className="text-sm text-black mb-2 font-normal">
         Escavadeira Infantil Elétrica 12V: Diversão e Desenvolvimento para seu Filho!
         <br/><br/>
-        Proporcione momentos inesquecíveis de diversão e aprendizado com a Mini Escavadeira Elétrica 12V! Perfeita para crianças de 1 a 4 anos, este brinquedo combina segurança, qualidade e muita aventura. Com controle remoto parental, bateria recarregável e design robusto.
+        Proporcione momentos inesquecíveis de diversão e aprendizado com a Mini Escavadeira Elétrica 12V! Perfeita para crianças de 1 a 9 anos, este brinquedo combina segurança, qualidade e muita aventura. Com controle remoto parental, bateria recarregável e design robusto.
         <br/><br/>
         <span className="font-semibold">
           Descrição do Produto:
@@ -45,7 +45,7 @@ export default function DescriptionSection() {
         <br/>
         Capacidade: Suporta até 25-30kg
         <br/>
-        Idade Recomendada: 1 a 4 anos
+        Idade Recomendada: 1 a 9 anos
         <br/>
         Dimensões: 119cm x 54cm x 55cm (aproximadamente)
         <br/>
