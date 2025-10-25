@@ -5,12 +5,6 @@ import PriceSection from '@/components/PriceSection';
 import OffersSection from '@/components/OffersSection';
 import ReviewsSection from '@/components/ReviewsSection';
 import DescriptionSection from '@/components/DescriptionSection';
-import excavatorImg1 from '@assets/stock_images/yellow_electric_toy__ca37a9da.jpg';
-import excavatorImg2 from '@assets/stock_images/yellow_electric_toy__b05e63d3.jpg';
-import excavatorImg3 from '@assets/stock_images/yellow_electric_toy__f7f6affa.jpg';
-import excavatorImg4 from '@assets/stock_images/yellow_electric_toy__2f16a52e.jpg';
-import excavatorImg5 from '@assets/stock_images/yellow_electric_toy__2e26f5ae.jpg';
-import excavatorImg6 from '@assets/stock_images/yellow_electric_toy__3400ee6f.jpg';
 
 export default function ProductPage() {
   const [, setLocation] = useLocation();
@@ -49,27 +43,27 @@ export default function ProductPage() {
 
   const images = [
     {
-      src: excavatorImg1,
+      src: "https://http2.mlstatic.com/D_NQ_NP_2X_913908-MLB88641214390_072025-F-escavadeira-infantil-eletrica-12v-mini-trator-remoto.webp",
       alt: "Escavadeira infantil elétrica 12V amarela, vista frontal, produto completo"
     },
     {
-      src: excavatorImg2,
+      src: "https://http2.mlstatic.com/D_NQ_NP_2X_788246-MLB86659381553_062025-F-escavadeira-infantil-eletrica-12v-mini-trator-remoto.webp",
       alt: "Escavadeira infantil elétrica 12V amarela, vista lateral, produto completo"
     },
     {
-      src: excavatorImg3,
+      src: "https://http2.mlstatic.com/D_NQ_NP_2X_607326-MLB86659877245_062025-F-escavadeira-infantil-eletrica-12v-mini-trator-remoto.webp",
       alt: "Escavadeira infantil elétrica 12V amarela, vista superior, detalhes do braço"
     },
     {
-      src: excavatorImg4,
+      src: "https://http2.mlstatic.com/D_NQ_NP_2X_876071-MLB86659023743_062025-F-escavadeira-infantil-eletrica-12v-mini-trator-remoto.webp",
       alt: "Escavadeira infantil elétrica 12V amarela, detalhes do controle remoto"
     },
     {
-      src: excavatorImg5,
+      src: "https://http2.mlstatic.com/D_NQ_NP_2X_807839-MLB86659877237_062025-F-escavadeira-infantil-eletrica-12v-mini-trator-remoto.webp",
       alt: "Escavadeira infantil elétrica 12V amarela, criança utilizando o brinquedo"
     },
     {
-      src: excavatorImg6,
+      src: "https://http2.mlstatic.com/D_NQ_NP_2X_735591-MLB86517793498_062025-F-escavadeira-infantil-eletrica-12v-mini-trator-remoto.webp",
       alt: "Escavadeira infantil elétrica 12V amarela, close-up dos detalhes"
     }
   ];

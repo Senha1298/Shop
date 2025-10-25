@@ -14,44 +14,44 @@ export default function ReviewsSection() {
     {
       name: "Carlos Eduardo Silva",
       rating: 5,
-      variant: "VERMELHO",
-      comment: "Produto incrível! O buggy é potente, robusto e muito divertido. O motor a gasolina 29cc tem muita força e a bolsa de transporte é super prática. Chegou antes do prazo e muito bem embalado. Recomendo!",
-      image: "https://i.ytimg.com/vi/EZKnLCubXHM/maxresdefault.jpg"
+      variant: "AMARELO",
+      comment: "Produto incrível! Minha filha de 3 anos amou a escavadeira. A bateria dura bastante, o controle remoto funciona perfeitamente e a qualidade é excelente. Chegou antes do prazo e muito bem embalado. Recomendo!",
+      image: "https://ireland.apollo.olxcdn.com/v1/files/ca1sp3l69jzz1-PL/image;s=1080x1080"
     },
     {
       name: "Mariana Costa",
       rating: 5,
-      variant: "VERMELHO",
-      comment: "Comprei para meu filho e ele amou! A qualidade é excelente, o controle remoto é preciso e o buggy aguenta bem terrenos difíceis. Vale muito a pena!",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStfzIW_SybyKMNzECCYW8wdQ_AgMPqndH-m0RnsAVuRr6dDSbIt9ze5SOMJB2t_00VAkU&usqp=CAU"
+      variant: "AMARELO",
+      comment: "Comprei para meu filho e ele não para de brincar! A escavadeira é robusta, segura e muito divertida. O braço da escavadeira funciona de verdade e ele adora. Vale muito a pena!",
+      image: "https://ridecars.nl/cdn/shop/files/Elektrische_kinder_graafmachine_24_volt_-_RideCars-6911012_1000x750.jpg?v=1736430651"
     },
     {
       name: "Roberto Almeida",
       rating: 5,
-      variant: "VERMELHO",
-      comment: "Excelente custo benefício! O buggy é muito bem construído, o motor é potente e econômico. A suspensão funciona muito bem em terrenos irregulares. Estou muito satisfeito!",
-      image: "https://makerworld.bblmw.com/makerworld/model/US1f5ee8e63c5277/design/2024-11-12_b97c4be59dd95.jpg?x-oss-process=image/resize,w_400/format,webp"
+      variant: "AMARELO",
+      comment: "Excelente custo benefício! A escavadeira elétrica é muito bem construída, a bateria 12V tem boa autonomia e o carregador é bivolt. Meu neto está adorando brincar. Estou muito satisfeito!",
+      image: "https://ireland.apollo.olxcdn.com/v1/files/tbgfmxpoycit2-PL/image;s=1080x1080"
     },
     {
       name: "Ana Paula Rodrigues",
       rating: 5,
-      variant: "VERMELHO",
-      comment: "Produto de altíssima qualidade! Meu marido está adorando. O acabamento é perfeito, o motor funciona perfeitamente e a velocidade é surpreendente. Entrega rápida!",
-      image: "https://cache.willhaben.at/mmo/2/191/005/6182_-1974736377_hoved.jpg"
+      variant: "AMARELO",
+      comment: "Produto de altíssima qualidade! Meu filho está adorando. O acabamento é perfeito, todas as funções funcionam bem (buzina, luzes, músicas) e é muito seguro. Entrega rápida!",
+      image: "https://img12.360buyimg.com/n1/jfs/t1/275231/24/17184/350071/67f39553Fb5a7da53/94725fa61b996cc3.jpg"
     },
     {
       name: "Lucas Ferreira",
       rating: 5,
-      variant: "VERMELHO",
-      comment: "Simplesmente perfeito! O buggy tem muita potência, a construção é sólida e resistente. A bolsa facilita muito o transporte. Melhor compra que fiz este ano!",
-      image: "https://img.olx.com.br/images/18/180579196977419.jpg"
+      variant: "AMARELO",
+      comment: "Simplesmente perfeito! A escavadeira tem controle remoto parental para emergências, a construção é sólida e resistente. Minha filha se diverte muito e está desenvolvendo coordenação motora. Melhor compra!",
+      image: "https://svkinderautos.nl/assets/uploads/autos/Elektrische-Kinderauto-Graafmachine-Geel7463.jpg"
     }
   ];
 
   return (
     <div className="px-4 py-3" style={{ maxWidth: '428px' }}>
       <div className="text-base font-bold mb-2 text-black">
-        Avaliações dos clientes (32)
+        Avaliações dos clientes (127)
       </div>
       
       <div className="flex items-center mb-3">
@@ -68,10 +68,10 @@ export default function ReviewsSection() {
           <i className="fas fa-star"></i>
         </span>
         <span className="text-[#ffb400] text-base">
-          <i className="fas fa-star-half-alt"></i>
+          <i className="fas fa-star"></i>
         </span>
         <span className="ml-2 text-black text-sm font-normal">
-          4.6
+          4.8
         </span>
         <span className="ml-2 text-[#757575] text-sm font-normal">
           /5
@@ -104,7 +104,7 @@ export default function ReviewsSection() {
           
           <div className="flex space-x-2 mb-2">
             <img 
-              alt={`Foto real do buggy controle remoto a gasolina vermelho - avaliação ${index + 1}`}
+              alt={`Foto real da escavadeira infantil elétrica 12V amarela - avaliação ${index + 1}`}
               className="w-14 h-14 rounded object-cover border border-[#e0e0e0]" 
               height="56" 
               src={review.image}

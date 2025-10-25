@@ -14,17 +14,17 @@ export default function PriceSection() {
             A partir de&nbsp;
           </span>
           <span className="text-[#F52B56] text-2xl font-semibold leading-none">
-            R$ 1.899,90
+            R$ 189,90
           </span>
         </span>
         <i className="fas fa-ticket-alt text-[#F52B56] text-sm"></i>
         <span className="flex items-center text-[#e0e0e0] line-through text-sm font-normal whitespace-nowrap">
-          R$ 3.799,90
+          R$ 379,80
         </span>
       </div>
       
       <div className="text-sm text-[#757575] mt-1" style={{ fontWeight: 400 }}>
-        12x R$ 158,32
+        12x R$ 15,83
         <span className="text-[#F52B56]">
           {' '}sem juros
         </span>
@@ -33,7 +33,7 @@ export default function PriceSection() {
       <div className="mt-1 font-normal inline-block rounded px-2 py-1" style={{ background: '#FDE5EA' }}>
         <span className="text-[#F52B56] text-sm flex items-center">
           <i className="fas fa-ticket-alt mr-1"></i>
-          Desconto de 10%, máximo de R$ 190
+          Desconto de 10%, máximo de R$ 19
         </span>
       </div>
       
