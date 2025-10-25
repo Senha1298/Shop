@@ -47,7 +47,10 @@ function MobileOnlyGuard({ children }: { children: React.ReactNode }) {
     const checkDevice = async () => {
       // Desativa redirecionamento no preview da Replit
       const isReplitPreview = window.location.hostname.includes('replit.dev') || 
-                             window.location.hostname.includes('repl.co');
+                             window.location.hostname.includes('repl.co') ||
+                             window.location.hostname.includes('replit.app') ||
+                             window.location.hostname.includes('localhost') ||
+                             window.location.hostname === '127.0.0.1';
       
       if (isReplitPreview) {
         console.log('🔧 Preview da Replit detectado - redirecionamento desktop desativado');
