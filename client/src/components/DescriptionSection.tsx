@@ -5,47 +5,61 @@ export default function DescriptionSection() {
         Descrição
       </div>
       <div className="text-sm text-black mb-2 font-normal">
-        Buggy Controle Remoto a Gasolina 29cc Off Road: Potência, Velocidade e Adrenalina!
+        Escavadeira Infantil Elétrica 12V: Diversão e Desenvolvimento para seu Filho!
         <br/><br/>
-        Experimente a emoção de pilotar um buggy off-road profissional em escala reduzida! Este buggy a gasolina com motor 29cc oferece desempenho excepcional, velocidade impressionante e resistência para terrenos difíceis. Acompanha bolsa de transporte para maior praticidade.
+        Proporcione momentos inesquecíveis de diversão e aprendizado com a Mini Escavadeira Elétrica 12V! Perfeita para crianças de 1 a 4 anos, este brinquedo combina segurança, qualidade e muita aventura. Com controle remoto parental, bateria recarregável e design robusto.
         <br/><br/>
         <span className="font-semibold">
           Descrição do Produto:
         </span>
         <br/>
-        Este buggy profissional possui motor a gasolina 2 tempos de 29cc com partida elétrica, sistema de suspensão independente nas 4 rodas e pneus de borracha maciça para máxima aderência em qualquer terreno. O controle remoto de longo alcance (até 100 metros) permite controle total do veículo com precisão.
+        Esta escavadeira infantil elétrica possui bateria recarregável 12V com até 3 horas de autonomia, controle remoto parental 2.4G para segurança adicional, braço escavadeira manual funcional, buzina, luzes LED e sistema de som com músicas. Certificada pelo INMETRO para total segurança.
         <br/><br/>
         <span className="font-semibold">
           Características Principais:
         </span>
         <br/>
-        Motor Potente: Motor a gasolina 29cc de alto desempenho com partida elétrica
+        Bateria Potente: Bateria 12V recarregável com autonomia de 1 a 3 horas
         <br/>
-        Controle Remoto: Sistema de rádio controle 2.4GHz com alcance de até 100 metros
+        Controle Remoto: Controle parental 2.4GHz para maior segurança dos pequenos
         <br/>
-        Suspensão: Sistema de suspensão independente nas 4 rodas para terrenos irregulares
+        Braço Funcional: Escavadeira manual que realmente funciona
         <br/>
-        Velocidade: Atinge até 45 km/h em superfícies planas
+        Velocidade: Velocidade de 3-5 km/h, ideal para segurança infantil
         <br/>
-        Chassi Reforçado: Estrutura em alumínio aeronáutico ultra-resistente
+        Multimídia: Buzina, luzes LED, entrada USB/MP3 e músicas pré-programadas
+        <br/>
+        Segurança: Certificado INMETRO e materiais atóxicos
         <br/><br/>
         <span className="font-semibold">
           Especificações Técnicas:
         </span>
         <br/>
-        Motor: 29cc 2 tempos a gasolina
+        Bateria: 12V recarregável (incluso)
         <br/>
-        Combustível: Gasolina + óleo 2T (mistura 25:1)
+        Carregador: Bivolt 110V/220V automático
         <br/>
-        Autonomia: Aproximadamente 30 minutos por tanque
+        Tempo de Carga: 8-12 horas
         <br/>
-        Escala: 1/5
+        Autonomia: 1-3 horas de uso contínuo
         <br/>
-        Dimensões: 80cm x 50cm x 30cm
+        Capacidade: Suporta até 25-30kg
         <br/>
-        Peso: Aproximadamente 12kg
+        Idade Recomendada: 1 a 4 anos
         <br/>
-        Inclui: Buggy, controle remoto, bolsa de transporte, ferramentas básicas e manual
+        Dimensões: 119cm x 54cm x 55cm (aproximadamente)
+        <br/>
+        Material: Plástico resistente de alta qualidade + estrutura em aço
+        <br/>
+        Controles: Pedal de aceleração (frente/ré), volante, braço escavadeira manual
+        <br/>
+        Inclui: Escavadeira, bateria 12V, carregador bivolt, controle remoto, manual em português
+        <br/><br/>
+        <span className="font-semibold">
+          Benefícios Pedagógicos:
+        </span>
+        <br/>
+        Desenvolve coordenação motora, noção espacial, criatividade e imaginação. Estimula brincadeiras ao ar livre e atividade física.
         <br/><br/>
         <span className="font-semibold">
           Garantia:
@@ -55,8 +69,10 @@ export default function DescriptionSection() {
         <br/>
         Tipo de Garantia: Fornecedor
         <br/>
+        Certificação: INMETRO
+        <br/>
         <span className="text-[#bdbdbd]">
-          *Imagens meramente ilustrativas. Produto testado antes do envio.
+          *Imagens meramente ilustrativas. Produto testado antes do envio. Nunca descarregue completamente a bateria. Recarregue após cada uso.
         </span>
       </div>
     </div>

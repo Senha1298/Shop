@@ -5,6 +5,12 @@ import PriceSection from '@/components/PriceSection';
 import OffersSection from '@/components/OffersSection';
 import ReviewsSection from '@/components/ReviewsSection';
 import DescriptionSection from '@/components/DescriptionSection';
+import excavatorImg1 from '@assets/stock_images/yellow_electric_toy__ca37a9da.jpg';
+import excavatorImg2 from '@assets/stock_images/yellow_electric_toy__b05e63d3.jpg';
+import excavatorImg3 from '@assets/stock_images/yellow_electric_toy__f7f6affa.jpg';
+import excavatorImg4 from '@assets/stock_images/yellow_electric_toy__2f16a52e.jpg';
+import excavatorImg5 from '@assets/stock_images/yellow_electric_toy__2e26f5ae.jpg';
+import excavatorImg6 from '@assets/stock_images/yellow_electric_toy__3400ee6f.jpg';
 
 export default function ProductPage() {
   const [, setLocation] = useLocation();
@@ -43,28 +49,28 @@ export default function ProductPage() {
 
   const images = [
     {
-      src: "https://ae-pic-a1.aliexpress-media.com/kf/S964945ee819e41c68c769ba1eccbc8981.jpg_640x640q75.jpg_.avif",
-      alt: "Buggy controle remoto a gasolina vermelho, vista frontal, produto completo, fundo branco"
+      src: excavatorImg1,
+      alt: "Escavadeira infantil elétrica 12V amarela, vista frontal, produto completo"
     },
     {
-      src: "https://ae-pic-a1.aliexpress-media.com/kf/S3edcac9db7944c9186d550d2b625e239A.jpg_640x640q75.jpg_.avif",
-      alt: "Buggy controle remoto a gasolina vermelho, vista lateral, produto completo, fundo branco"
+      src: excavatorImg2,
+      alt: "Escavadeira infantil elétrica 12V amarela, vista lateral, produto completo"
     },
     {
-      src: "https://ae-pic-a1.aliexpress-media.com/kf/S3911ca6e90304ce1a881631d30ec103a8.jpg_640x640q75.jpg_.avif",
-      alt: "Buggy controle remoto a gasolina vermelho, vista superior, detalhes do chassi, fundo branco"
+      src: excavatorImg3,
+      alt: "Escavadeira infantil elétrica 12V amarela, vista superior, detalhes do braço"
     },
     {
-      src: "https://ae-pic-a1.aliexpress-media.com/kf/Sd9b4a29817aa4c05b36ea06d8c43238bj.jpg_640x640q75.jpg_.avif",
-      alt: "Buggy controle remoto a gasolina vermelho, detalhes do motor, fundo branco"
+      src: excavatorImg4,
+      alt: "Escavadeira infantil elétrica 12V amarela, detalhes do controle remoto"
     },
     {
-      src: "https://ae-pic-a1.aliexpress-media.com/kf/S08be454ef1064d878b6e75c062193b9eU.jpg_640x640q75.jpg_.avif",
-      alt: "Buggy controle remoto a gasolina vermelho com bolsa de transporte, fundo branco"
+      src: excavatorImg5,
+      alt: "Escavadeira infantil elétrica 12V amarela, criança utilizando o brinquedo"
     },
     {
-      src: "https://ae-pic-a1.aliexpress-media.com/kf/S2169cbd4881e4ed188a2f5c0f3e15d97X.jpg_640x640q75.jpg_.avif",
-      alt: "Buggy controle remoto a gasolina vermelho, close-up dos detalhes, fundo branco"
+      src: excavatorImg6,
+      alt: "Escavadeira infantil elétrica 12V amarela, close-up dos detalhes"
     }
   ];
 

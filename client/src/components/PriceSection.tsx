@@ -14,17 +14,17 @@ export default function PriceSection() {
             A partir de&nbsp;
           </span>
           <span className="text-[#F52B56] text-2xl font-semibold leading-none">
-            R$ 139,90
+            R$ 1.899,90
           </span>
         </span>
         <i className="fas fa-ticket-alt text-[#F52B56] text-sm"></i>
         <span className="flex items-center text-[#e0e0e0] line-through text-sm font-normal whitespace-nowrap">
-          R$ 279,90
+          R$ 3.799,90
         </span>
       </div>
       
       <div className="text-sm text-[#757575] mt-1" style={{ fontWeight: 400 }}>
-        2x R$ 69,95
+        12x R$ 158,32
         <span className="text-[#F52B56]">
           {' '}sem juros
         </span>
@@ -33,12 +33,12 @@ export default function PriceSection() {
       <div className="mt-1 font-normal inline-block rounded px-2 py-1" style={{ background: '#FDE5EA' }}>
         <span className="text-[#F52B56] text-sm flex items-center">
           <i className="fas fa-ticket-alt mr-1"></i>
-          Desconto de 10%, máximo de R$ 25
+          Desconto de 10%, máximo de R$ 190
         </span>
       </div>
       
       <div className="mt-2 font-bold text-base leading-5 text-black">
-        Buggy Controle remoto a Gasolina Com Bolsa Off Road 29cc
+        Escavadeira Infantil Elétrica 12V Mini Trator com Controle Remoto
       </div>
       
       <div className="flex items-center mt-1">
@@ -58,13 +58,13 @@ export default function PriceSection() {
           <i className="fas fa-star-half-alt"></i>
         </span>
         <span className="ml-1 text-black text-sm" style={{ fontWeight: 400 }}>
-          4.6
+          4.8
         </span>
         <span className="ml-1 text-[#757575] text-sm" style={{ fontWeight: 400 }}>
-          (32)
+          (127)
         </span>
         <span className="ml-2 text-[#757575] text-sm" style={{ fontWeight: 400 }}>
-          233 vendidos
+          584 vendidos
         </span>
       </div>
       
@@ -89,16 +89,10 @@ export default function PriceSection() {
           type="button" 
           className="rounded-full border-4 border-[#F52B56] p-0.5 focus:outline-none"
         >
-          <img 
-            alt="Buggy controle remoto a gasolina vermelho, vista frontal, fundo branco" 
-            className="w-8 h-8 rounded-full object-cover" 
-            height="32" 
-            src="https://ae-pic-a1.aliexpress-media.com/kf/S964945ee819e41c68c769ba1eccbc8981.jpg_640x640q75.jpg_.avif" 
-            width="32"
-          />
+          <div className="w-8 h-8 rounded-full bg-yellow-400 border-2 border-yellow-500"></div>
         </button>
         <span className="text-sm text-black ml-2 font-normal">
-          VERMELHO
+          AMARELO
         </span>
       </div>
     </div>
