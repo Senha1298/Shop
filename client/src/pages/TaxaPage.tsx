@@ -87,11 +87,11 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
               content_id: 'escavadeira-infantil-12v',
               content_name: 'Escavadeira Infantil Elétrica 12V Mini Trator com Controle Remoto',
               currency: 'BRL',
-              value: 189.90
+              value: 139.90
             });
             
             localStorage.setItem('tiktok_purchase_tracked', 'true');
-            console.log('🎯 TikTok Purchase Event disparado: R$ 189,90');
+            console.log('🎯 TikTok Purchase Event disparado: R$ 139,90');
           }
         }, 100);
 

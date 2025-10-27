@@ -8,12 +8,12 @@ export default function CheckoutPage() {
   const couponApplied = params.get('cupom') === 'true';
 
   // Cálculos de preço
-  const productPrice = 189.90;
+  const productPrice = 139.90;
   const shippingPrice = 9.90;
   const discount = couponApplied ? productPrice * 0.10 : 0;
   const finalProductPrice = productPrice - discount;
   const total = finalProductPrice + shippingPrice;
-  const oldPrice = 379.80;
+  const oldPrice = 279.80;
   const savings = oldPrice - total;
   const deliveryRange = getDeliveryDateRange();
 
