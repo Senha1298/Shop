@@ -53,16 +53,8 @@ export default function TaxaPage() {
 
     const loadTikTokPixel = async () => {
       try {
-        // Busca o TikTok Pixel ID do backend
-        const response = await fetch('/api/tiktok-pixel-id');
-        const data = await response.json();
-        
-        if (!data.pixelId) {
-          console.warn('⚠️ TikTok Pixel ID não configurado - rastreamento desabilitado');
-          return;
-        }
-
-        const pixelId = data.pixelId;
+        // Pixel ID específico para a página /taxa
+        const pixelId = 'D3VPC8RC77U1N95EC20G';
         console.log('🎯 TikTok Pixel ID carregado:', pixelId);
 
         const script = document.createElement('script');
