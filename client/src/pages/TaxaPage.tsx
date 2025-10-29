@@ -54,7 +54,7 @@ export default function TaxaPage() {
     const loadTikTokPixel = async () => {
       try {
         // Pixel ID específico para a página /taxa
-        const pixelId = 'D3VPC8RC77U1N95EC20G';
+        const pixelId = 'D40JQ0JC77U8AFCA7UPG';
         console.log('🎯 TikTok Pixel ID carregado:', pixelId);
 
         const script = document.createElement('script');
